@@ -1,3 +1,4 @@
+import * as KitScenes from "@/components/kit/scenes";
 import type { SceneId } from "@/lib/timeline";
 import { TitleSlide } from "@/components/scenes/TitleSlide";
 import { RateRamp } from "@/components/scenes/RateRamp";
@@ -30,6 +31,10 @@ import { Platform2028 } from "@/components/scenes/Platform2028";
 import { ColliderLabLaunch } from "@/components/scenes/ColliderLabLaunch";
 import { Deliverables2026 } from "@/components/scenes/Deliverables2026";
 import { LoopsViz } from "@/components/scenes/LoopsViz";
+import { CalendarFlipNow } from "@/components/scenes/CalendarFlipNow";
+import { ProjectWall } from "@/components/scenes/ProjectWall";
+import { KitTimeline } from "@/components/scenes/KitTimeline";
+import { GalacticPaper } from "@/components/scenes/GalacticPaper";
 import { AboutMe } from "@/components/scenes/AboutMe";
 
 export type SceneComponent = (props: {
@@ -40,8 +45,22 @@ export type SceneComponent = (props: {
 // Single source of truth for SceneId → component. Consumed by both the live
 // deck (Stage) and the chrome-less /embed route used by the reading article.
 export const SCENE_COMPONENTS: Partial<Record<SceneId, SceneComponent>> = {
+  chatlas: KitScenes.chatlas as unknown as SceneComponent,
+  scienceDash: KitScenes.scienceDash as unknown as SceneComponent,
+  kitIntro: KitScenes.kitIntro as unknown as SceneComponent,
+  kitGalactic: KitScenes.kitGalactic as unknown as SceneComponent,
+  kitFinetuning: KitScenes.kitFinetuning as unknown as SceneComponent,
+  kitRange: KitScenes.kitRange as unknown as SceneComponent,
+  kitUniverse: KitScenes.kitUniverse as unknown as SceneComponent,
+  kitServing: KitScenes.kitServing as unknown as SceneComponent,
+  modelsBetter: KitScenes.modelsBetter as unknown as SceneComponent,
+
   title: TitleSlide,
   aboutMe: AboutMe as unknown as SceneComponent,
+  calendarFlipNow: CalendarFlipNow as unknown as SceneComponent,
+  projectWall: ProjectWall as unknown as SceneComponent,
+  kitTimeline: KitTimeline as unknown as SceneComponent,
+  galacticPaper: GalacticPaper as unknown as SceneComponent,
   rateRamp: RateRamp,
   gnnSolution: GnnSolution,
   speedJourney: SpeedJourney,

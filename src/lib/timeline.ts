@@ -51,7 +51,12 @@ export type SceneId =
   | "galacticPaper"
   | "modelsBetter"
   | "lessons"
-  | "thanks";
+  | "thanks"
+  | "easterTyped"
+  | "chatlasAsk"
+  | "chatlasTicket"
+  | "threeClaims"
+  | "close";
 
 export type Theme = "dark" | "light";
 
@@ -70,35 +75,33 @@ export type Scene = {
 // Acts 1-2 dark (the LHC and the Easter paper), acts 3-4 light (since then).
 export const SCENES: Scene[] = [
   // ── Act 1 · who I am, and why tracking (dark) ──
-  { id: "title",            label: "Title",                               act: 1, startSec: 0,   endSec: 25,  steps: 1 },
-  { id: "aboutMe",          label: "About me · Halfspace, NBI, CERN, Berkeley", act: 1, startSec: 25,  endSec: 50,  steps: 3 },
-  { id: "rateRamp",         label: "40 million per second",               act: 1, startSec: 50,  endSec: 85,  steps: 6 },
-  { id: "gnnSolution",      label: "Graph tracking on a real event",      act: 1, startSec: 85,  endSec: 125, steps: 4 },
-  { id: "speedJourney",     label: "From 60 s to 100 kHz",                act: 1, startSec: 125, endSec: 150, steps: 4 },
-  // ── Act 2 · three loops, and the Easter paper (dark) ──
-  { id: "loopsVizOuter",    label: "Three loops on one slide",            act: 2, startSec: 150, endSec: 240, steps: 3 },
-  { id: "easter1Release",   label: "Easter · ColliderML release (simulated with Claude)", act: 2, startSec: 240, endSec: 255, steps: 1 },
-  { id: "easter2Bug",       label: "Easter · bug email",                  act: 2, startSec: 255, endSec: 275, steps: 1 },
-  { id: "easter3SmokingGun",label: "Easter · beamspot + smoking gun",     act: 2, startSec: 275, endSec: 300, steps: 3 },
-  { id: "easter5Dispatch",  label: "Easter · dispatching from my phone",  act: 2, startSec: 300, endSec: 335, steps: 2 },
-  { id: "easter8Reveal",    label: "Easter · the paper · 16 pages",       act: 2, startSec: 335, endSec: 370, steps: 3 },
-  // ── Act 3 · the seven months since (light) ──
-  { id: "calendarFlipNow",  label: "Flip · April → November 2026",        act: 3, startSec: 370, endSec: 376, steps: 1 },
-  { id: "projectWall",      label: "All the projects · roulette",         act: 3, startSec: 376, endSec: 392, steps: 2 },
-  { id: "chatlas",          label: "ChATLAS · last week",                 act: 3, startSec: 392, endSec: 425, steps: 3 },
-  { id: "scienceDash",      label: "ScienceDash runs all of it",          act: 3, startSec: 425, endSec: 445, steps: 2 },
+  { id: "title", label: "Title", act: 1, startSec: 0, endSec: 20, steps: 1 },
+  { id: "aboutMe", label: "About me · Halfspace, NBI, CERN, Berkeley", act: 1, startSec: 20, endSec: 50, steps: 3 },
+  { id: "rateRamp", label: "40 million per second", act: 1, startSec: 50, endSec: 80, steps: 6 },
+  { id: "gnnSolution", label: "Graph tracking on a real event", act: 1, startSec: 80, endSec: 110, steps: 4 },
+  { id: "speedJourney", label: "From 60 s to 100 kHz", act: 1, startSec: 110, endSec: 150, steps: 4 },
 
-  { id: "kitIntro",         label: "KIT · what we cooked, and when",      act: 4, startSec: 445, endSec: 465, steps: 1 },
-  { id: "kitGalactic",      label: "Project · dark-matter halos",         act: 4, startSec: 465, endSec: 480, steps: 1 },
-  { id: "kitFinetuning",    label: "Project · fine-tuning",               act: 4, startSec: 480, endSec: 490, steps: 1 },
-  { id: "kitRange",         label: "Project · beat RANGE",                act: 4, startSec: 490, endSec: 505, steps: 1 },
-  { id: "kitUniverse",      label: "Project · a new universe",            act: 4, startSec: 505, endSec: 520, steps: 1 },
-  { id: "kitTimeline",      label: "Six hours, animated · where each froze", act: 4, startSec: 520, endSec: 640, steps: 6 },
-  { id: "kitServing",       label: "What the projects cooked",            act: 4, startSec: 640, endSec: 660, steps: 1 },
-  { id: "galacticPaper",    label: "Galactic clustering · how close to a paper", act: 4, startSec: 660, endSec: 720, steps: 3 },
-  { id: "modelsBetter",     label: "Are the models getting better?",      act: 4, startSec: 720, endSec: 750, steps: 1 },
-  { id: "lessons",          label: "Lessons",                             act: 4, startSec: 750, endSec: 870, steps: 3 },
-  { id: "thanks",           label: "Questions",                           act: 4, startSec: 870, endSec: 900, steps: 1 },
+  { id: "loopsVizOuter", label: "Three loops: how long until something tells you you're wrong?", act: 2, startSec: 150, endSec: 200, steps: 3 },
+  { id: "easter1Release", label: "Easter · ColliderML release", act: 2, startSec: 200, endSec: 215, steps: 1 },
+  { id: "easter2Bug", label: "Easter · twice as precise. A bug?", act: 2, startSec: 215, endSec: 240, steps: 1 },
+  { id: "easterTyped", label: "Lesson 1 · what did I actually type?", act: 2, startSec: 240, endSec: 300, steps: 5 },
+  { id: "easter3SmokingGun", label: "Easter · a model that always answers zero", act: 2, startSec: 300, endSec: 330, steps: 3 },
+  { id: "easter8Reveal", label: "Easter · the paper", act: 2, startSec: 330, endSec: 350, steps: 3 },
+
+  { id: "calendarFlipNow", label: "Flip · April → November 2026", act: 3, startSec: 350, endSec: 356, steps: 1 },
+  { id: "projectWall", label: "The wall of projects (unnarrated)", act: 3, startSec: 356, endSec: 370, steps: 2 },
+  { id: "chatlasAsk", label: "Lesson 2 · can it answer our colleagues' questions?", act: 3, startSec: 370, endSec: 410, steps: 2 },
+  { id: "chatlasTicket", label: "Lesson 2 · can it do the ticket?", act: 3, startSec: 410, endSec: 460, steps: 3 },
+
+  { id: "kitIntro", label: "Lesson 3 · KIT, five projects in an afternoon", act: 4, startSec: 460, endSec: 475, steps: 2 },
+  { id: "kitGalactic", label: "Project · dark-matter halos", act: 4, startSec: 475, endSec: 490, steps: 3 },
+  { id: "kitRange", label: "Project · beat RANGE", act: 4, startSec: 490, endSec: 505, steps: 3 },
+  { id: "kitUniverse", label: "Project · a new universe", act: 4, startSec: 505, endSec: 530, steps: 4 },
+  { id: "kitTimeline", label: "Lesson 3 · the afternoon, lane by lane", act: 4, startSec: 530, endSec: 620, steps: 6 },
+  { id: "threeClaims", label: "Lesson 4 · three claims, which would you believe?", act: 4, startSec: 620, endSec: 690, steps: 5 },
+  { id: "galacticPaper", label: "Lesson 4 · where the halo finder got to", act: 4, startSec: 690, endSec: 770, steps: 3 },
+  { id: "modelsBetter", label: "Lesson 5 · are the models getting better?", act: 4, startSec: 770, endSec: 850, steps: 3 },
+  { id: "close", label: "Close", act: 4, startSec: 850, endSec: 900, steps: 1 },
 ];
 
 export const TOTAL_SEC = 900;

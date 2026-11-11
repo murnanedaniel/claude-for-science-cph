@@ -1,0 +1,127 @@
+{
+  "day": {"start": "09:00", "end": "17:00"},
+  "projects": [
+    {
+      "id": "galactic",
+      "name": "Galactic clustering",
+      "oneLine": "Build a GPU halo finder and race it against existing codes",
+      "outcome": "worked",
+      "segments": [
+        {"start": "09:00", "end": "12:01", "state": "idle"},
+        {"start": "12:01", "end": "12:23", "state": "running"},
+        {"start": "12:23", "end": "12:24", "state": "waiting"},
+        {"start": "12:24", "end": "15:47", "state": "running"},
+        {"start": "15:47", "end": "15:53", "state": "idle"},
+        {"start": "15:53", "end": "17:00", "state": "running"}
+      ],
+      "milestones": [
+        {"t": "12:11", "label": "Finds a faster rival code", "kind": "progress"},
+        {"t": "12:28", "label": "Real data needs a human login", "kind": "progress"},
+        {"t": "12:40", "label": "First version matches the reference", "kind": "progress"},
+        {"t": "13:29", "label": "Exact on 134 million particles", "kind": "progress"},
+        {"t": "13:41", "label": "Daniel sets the goal", "kind": "progress"},
+        {"t": "15:05", "label": "Paper draft compiles", "kind": "progress"},
+        {"t": "15:47", "label": "Claims about 390x faster", "kind": "claim"},
+        {"t": "15:53", "label": "Daniel: really sure?", "kind": "correction"},
+        {"t": "15:54", "label": "Rival was run untuned", "kind": "correction"},
+        {"t": "17:04", "label": "Fair rerun: tie with best rival", "kind": "correction"}
+      ],
+      "freeze": null,
+      "after": "Stopped at 17:06 with slides and paper; real data never ran"
+    },
+    {
+      "id": "finetuning",
+      "name": "Fine-tuning",
+      "oneLine": "Test where a fine-tuning formula breaks, using Claude Science notebooks",
+      "outcome": "fizzled",
+      "segments": [
+        {"start": "09:00", "end": "12:18", "state": "idle"},
+        {"start": "12:18", "end": "12:19", "state": "running"},
+        {"start": "12:19", "end": "17:00", "state": "idle"}
+      ],
+      "milestones": [
+        {"t": "12:19", "label": "Prompt written for Claude Science", "kind": "progress"},
+        {"t": "13:50", "label": "Question about it goes unanswered", "kind": "progress"}
+      ],
+      "freeze": {"t": "12:19", "reason": "Ran in a separate app no agent could check"},
+      "after": "Called a fizzle at 20:14; no trace of any run"
+    },
+    {
+      "id": "range",
+      "name": "RANGE",
+      "oneLine": "Reproduce a force-field model, then try a transformer version",
+      "outcome": "stuck",
+      "segments": [
+        {"start": "09:00", "end": "13:47", "state": "idle"},
+        {"start": "13:47", "end": "14:10", "state": "running"},
+        {"start": "14:10", "end": "14:13", "state": "waiting"},
+        {"start": "14:13", "end": "14:34", "state": "running"},
+        {"start": "14:34", "end": "14:46", "state": "stalled"},
+        {"start": "14:46", "end": "17:00", "state": "running"}
+      ],
+      "milestones": [
+        {"t": "13:55", "label": "Goal: reproduce, then transformer", "kind": "progress"},
+        {"t": "14:45", "label": "Daniel asks for an update", "kind": "progress"},
+        {"t": "14:46", "label": "Hang found and fixed", "kind": "progress"},
+        {"t": "14:47", "label": "Authors' saved models match paper", "kind": "claim"},
+        {"t": "15:40", "label": "First transformer attempt fails", "kind": "progress"},
+        {"t": "16:46", "label": "Agent says goal is met", "kind": "claim"},
+        {"t": "17:00", "label": "Plain wider model beats both", "kind": "correction"}
+      ],
+      "freeze": {"t": "14:34", "reason": "Test trainings hung at multi-GPU startup, unnoticed 10 minutes"},
+      "after": "Ran into the night; full 30-hour training still running next day"
+    },
+    {
+      "id": "basic-model",
+      "name": "The Basic Model",
+      "oneLine": "Agents discover the hidden laws of a made-up universe",
+      "outcome": "stuck",
+      "segments": [
+        {"start": "09:00", "end": "14:25", "state": "idle"},
+        {"start": "14:25", "end": "15:44", "state": "running"},
+        {"start": "15:44", "end": "15:58", "state": "stalled"},
+        {"start": "15:58", "end": "16:50", "state": "running"},
+        {"start": "16:50", "end": "17:00", "state": "waiting"}
+      ],
+      "milestones": [
+        {"t": "14:29", "label": "Hidden universe build starts", "kind": "progress"},
+        {"t": "15:44", "label": "Universe built, all checks pass", "kind": "progress"},
+        {"t": "15:55", "label": "Daniel: can you approve this?", "kind": "progress"},
+        {"t": "15:58", "label": "Daniel approves; helper types yes", "kind": "progress"},
+        {"t": "15:59", "label": "Discovery lab starts", "kind": "progress"},
+        {"t": "16:44", "label": "First laws partly right", "kind": "progress"}
+      ],
+      "freeze": {"t": "15:44", "reason": "Stuck at a 'Trust this folder?' prompt no agent may answer"},
+      "after": "Ran into the evening; five of six goals met by 19:24"
+    },
+    {
+      "id": "tracking",
+      "name": "Tracking",
+      "oneLine": "Check if a small neural net fits tracks like a Kalman filter",
+      "outcome": "dropped",
+      "segments": [
+        {"start": "09:00", "end": "17:00", "state": "idle"}
+      ],
+      "milestones": [
+        {"t": "13:39", "label": "Planned slot passes, nothing launched", "kind": "progress"}
+      ],
+      "freeze": null,
+      "after": "Dropped; prepared data and code left ready to resume"
+    }
+  ],
+  "notes": [
+    "Galactic 15:47-15:53 'idle': deck was finished and nothing new was asked until Daniel's 15:53 challenge; no direct log of activity in that gap.",
+    "Galactic 12:23-12:24 'waiting': the worker refused the relayed start at 12:23 and was unblocked directly by Daniel; exact unblock time estimated as about one minute (first commit at 12:27).",
+    "Galactic segments end at 17:00 for the slide; actual last commit 17:03 and last message 17:06.",
+    "Fine-tuning 12:19-17:00 'idle': Claude Science's own logs are not reachable, so it is unknown whether anything ran there. No agent or human touched it from any visible log after 12:19.",
+    "Fine-tuning 'freeze' at 12:19 is the last visible activity, not an observed failure.",
+    "RANGE 'waiting' 14:10-14:13 is waiting on the cluster's debug queue, not on a human.",
+    "RANGE 14:34-14:46 'stalled': the hang started when the dev runs launched (~14:34); the worker only noticed at 14:44 and fixed it at 14:46.",
+    "RANGE milestone 'Plain wider model beats both' is placed at 17:00; evidence spans 17:00-17:22.",
+    "RANGE 'stuck' also reflects that the paper's 30 GPU-hour training could not fit in the day; the 14:34 freeze is the visible stall, not the whole story.",
+    "Basic Model 15:58-16:50 'running' and 16:50-17:00 'waiting': the lab ended its turn to wait for a human some time between 16:44 (last check showed progress) and 17:03 (nudged); 16:50 is an estimate.",
+    "Basic Model 09:00-14:25 shown as 'idle': a morning cleanup session sat waiting for an approval that never came (from 09:00), but the project itself was not scheduled to run then.",
+    "Basic Model 15:44-15:58: the 'Trust this folder?' prompt likely appeared shortly before the sealed session reported it at 15:44-15:47; start taken as 15:44.",
+    "Tracking 13:39 is the planned slot time from the course timeline, not a recorded decision. No session existed all day; when Daniel decided to drop it is unknown (stated at 20:14)."
+  ]
+}
