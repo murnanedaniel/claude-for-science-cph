@@ -20,7 +20,7 @@ function TitleLoops() {
   return (
     <svg
       viewBox="-150 -150 300 300"
-      className="absolute right-[3%] top-1/2 -translate-y-1/2 w-[34%] pointer-events-none"
+      className="absolute right-[4%] top-[8%] w-[28%] pointer-events-none"
       aria-hidden
     >
       {LOOPS.map((l, i) => (
