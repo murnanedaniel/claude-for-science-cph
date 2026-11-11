@@ -36,3 +36,4 @@ yarn-error.log*
 
 # screenshots from scripts/shoot.mjs
 /shots/
+tsconfig.tsbuildinfo
