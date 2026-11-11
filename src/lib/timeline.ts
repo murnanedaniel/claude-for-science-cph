@@ -97,7 +97,7 @@ export const SCENES: Scene[] = [
   { id: "kitGalactic", label: "Project · dark-matter halos", act: 4, startSec: 475, endSec: 490, steps: 3 },
   { id: "kitRange", label: "Project · beat RANGE", act: 4, startSec: 490, endSec: 505, steps: 3 },
   { id: "kitUniverse", label: "Project · a new universe", act: 4, startSec: 505, endSec: 530, steps: 4 },
-  { id: "kitTimeline", label: "Lesson 3 · the afternoon, lane by lane", act: 4, startSec: 530, endSec: 620, steps: 6 },
+  { id: "kitTimeline", label: "Lesson 3 · the afternoon, lane by lane", act: 4, startSec: 530, endSec: 620, steps: 5 },
   { id: "threeClaims", label: "Lesson 4 · three claims, which would you believe?", act: 4, startSec: 620, endSec: 690, steps: 5 },
   { id: "galacticPaper", label: "Lesson 4 · where the halo finder got to", act: 4, startSec: 690, endSec: 770, steps: 3 },
   { id: "modelsBetter", label: "Lesson 5 · are the models getting better?", act: 4, startSec: 770, endSec: 850, steps: 3 },

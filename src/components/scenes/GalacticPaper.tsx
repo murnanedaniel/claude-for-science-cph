@@ -10,9 +10,9 @@ export function GalacticPaper({ step }: { step: number }) {
       {step < 2 ? (
         <div className="relative my-[2%] min-h-0 flex-1">
           <motion.figure className="absolute inset-y-0 left-0 flex flex-col" initial={false} animate={{ width: step === 0 ? "100%" : "49%" }} transition={{ duration: 0.65 }}>
-            <img src={asset("/galactic/fig2_speedup_shrinks.png")} alt="Halo finder speed-up after tuning competing codes" className="min-h-0 w-full flex-1 object-contain" />
+            <img src={asset("/galactic/fig1_scaling_clustered.png")} alt="Run time against particle count for four halo finders" className="min-h-0 w-full flex-1 object-contain" />
             <figcaption className="mx-auto mt-3 max-w-[1000px] text-center text-[clamp(15px,1.45vw,24px)] leading-snug" style={{ fontFamily: "var(--font-serif)" }}>
-              {step === 0 ? "Tuning the rival code shrank the speed-up from about 390x to 157x on clustered boxes, and to a tie with the best GPU code" : "Fair tuning shrinks the speed-up"}
+              {step === 0 ? "Five hours from a paper I wanted to read: level with the best GPU code at 16.8 million particles" : "Level with the best code, not ahead"}
             </figcaption>
           </motion.figure>
           {step === 1 && <motion.figure className="absolute inset-y-0 right-0 flex w-[49%] flex-col" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>

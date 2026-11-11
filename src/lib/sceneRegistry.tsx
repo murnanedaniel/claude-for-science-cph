@@ -35,6 +35,11 @@ import { CalendarFlipNow } from "@/components/scenes/CalendarFlipNow";
 import { ProjectWall } from "@/components/scenes/ProjectWall";
 import { KitTimeline } from "@/components/scenes/KitTimeline";
 import { GalacticPaper } from "@/components/scenes/GalacticPaper";
+import { EasterTyped } from "@/components/scenes/EasterTyped";
+import { ChatlasAsk } from "@/components/scenes/ChatlasAsk";
+import { ChatlasTicket } from "@/components/scenes/ChatlasTicket";
+import { ThreeClaims } from "@/components/scenes/ThreeClaims";
+import { CloseSlide } from "@/components/scenes/CloseSlide";
 import { AboutMe } from "@/components/scenes/AboutMe";
 
 export type SceneComponent = (props: {
@@ -57,6 +62,11 @@ export const SCENE_COMPONENTS: Partial<Record<SceneId, SceneComponent>> = {
 
   title: TitleSlide,
   aboutMe: AboutMe as unknown as SceneComponent,
+  easterTyped: EasterTyped as unknown as SceneComponent,
+  chatlasAsk: ChatlasAsk as unknown as SceneComponent,
+  chatlasTicket: ChatlasTicket as unknown as SceneComponent,
+  threeClaims: ThreeClaims as unknown as SceneComponent,
+  close: CloseSlide as unknown as SceneComponent,
   calendarFlipNow: CalendarFlipNow as unknown as SceneComponent,
   projectWall: ProjectWall as unknown as SceneComponent,
   kitTimeline: KitTimeline as unknown as SceneComponent,

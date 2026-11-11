@@ -96,12 +96,12 @@ function Timeline({ step, start }: { step: number; start: number }) {
             })}
             {step === 4 && project.freeze && <g>
               <line x1={x(minutes(project.freeze.t))} x2={x(minutes(project.freeze.t))} y1={y - 12} y2={y + 43} stroke="#bd4940" strokeWidth="3" />
-              <text x={project.id === "basic-model" ? 1450 : x(minutes(project.freeze.t)) + 10} y={y + 63} textAnchor={project.id === "basic-model" ? "end" : "start"} fontSize="16" fill="#a93630">
+              <text x={project.id === "finetuning" ? x(minutes(project.freeze.t)) + 10 : x(minutes(project.freeze.t)) - 10} y={y + 63} textAnchor={project.id === "finetuning" ? "start" : "end"} fontSize="16" fill="#a93630">
                 {project.id === "finetuning" ? "Separate app; last visible activity, run unknown" : project.id === "range" ? "Multi-GPU startup hung; unnoticed for 10 minutes" : "“Trust this folder?” needed a human"}
                 <title>{project.freeze.reason}</title>
               </text>
             </g>}
-            {step === 4 && project.id === "tracking" && <text x="900" y={y + 21} fontSize="20" fill="#a93630">never launched</text>}
+            {step === 4 && project.id === "tracking" && <text x="1100" y={y + 21} fontSize="20" fill="#a93630">never launched</text>}
           </g>;
         })}
         {step < 4 && <g fontFamily="var(--font-geist-mono)"><line x1={x(time)} x2={x(time)} y1="195" y2="770" stroke={ink} strokeWidth="2" /><rect x={x(time) - 36} y="777" width="72" height="27" rx="4" fill={ink} /><text x={x(time)} y="796" textAnchor="middle" fontSize="16" fill="white">{clockLabel}</text></g>}
