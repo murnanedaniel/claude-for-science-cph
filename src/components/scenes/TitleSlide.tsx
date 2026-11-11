@@ -8,6 +8,51 @@ import { motion } from "motion/react";
 // TitleSlide now just fades the CSS paper out on exit; the overlay's rolling
 // animation starts as soon as the scene advances past this one.
 
+// Three loops (experiment, paper, programme), each with a dot orbiting at its
+// own pace: the talk's structure, drawn live because this deck is a web page.
+const LOOPS = [
+  { r: 46, label: "experiment", dur: 4, color: "#b45309" },
+  { r: 86, label: "paper", dur: 9, color: "#1d4ed8" },
+  { r: 126, label: "programme", dur: 18, color: "#047857" },
+];
+
+function TitleLoops() {
+  return (
+    <svg
+      viewBox="-150 -150 300 300"
+      className="absolute right-[3%] top-1/2 -translate-y-1/2 w-[34%] pointer-events-none"
+      aria-hidden
+    >
+      {LOOPS.map((l, i) => (
+        <motion.g
+          key={l.label}
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: 1, scale: 1, transition: { duration: 0.9, delay: 0.5 + i * 0.35, ease: [0.22, 1, 0.36, 1] } }}
+        >
+          <circle r={l.r} fill="none" stroke={l.color} strokeOpacity={0.35} strokeWidth={1.5} strokeDasharray={i === 0 ? "" : "3 4"} />
+          <motion.g
+            animate={{ rotate: 360 }}
+            transition={{ duration: l.dur, repeat: Infinity, ease: "linear" }}
+          >
+            <circle cx={l.r} cy={0} r={5} fill={l.color} />
+            <circle cx={l.r} cy={0} r={11} fill={l.color} fillOpacity={0.15} />
+          </motion.g>
+          <text
+            x={0}
+            y={-l.r - 6}
+            textAnchor="middle"
+            fontSize={10}
+            fill={l.color}
+            style={{ fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}
+          >
+            {l.label}
+          </text>
+        </motion.g>
+      ))}
+    </svg>
+  );
+}
+
 export function TitleSlide({ step: _step }: { step: number }) {
   // The cream paper rectangle is rendered by <PaperRollOverlay> at z-30.
   // TitleSlide holds only the text, positioned identically (w-[78%],
@@ -26,9 +71,11 @@ export function TitleSlide({ step: _step }: { step: number }) {
           style={{ fontFamily: "var(--font-serif)" }}
         >
           <div className="flex items-start justify-between text-[13px] tracking-wide text-ink/60">
-            <span>Agentic AI for Particle Physics · ETH Zürich · 25 June 2026</span>
-            <span>1 / 30</span>
+            <span>Claude for Science · Niels Bohr Institute · 12 November 2026</span>
+            <span>15 minutes</span>
           </div>
+
+          <TitleLoops />
 
           <div className="px-[4%]">
             <motion.div
@@ -36,10 +83,10 @@ export function TitleSlide({ step: _step }: { step: number }) {
               animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1 } }}
             >
               <h1 className="text-[clamp(36px,5.2vw,84px)] leading-[1.05] text-ink">
-                Agentic AI for Collider Physics
+                Doing physics with Claude
               </h1>
               <h2 className="text-[clamp(22px,2.8vw,44px)] leading-[1.1] mt-3 text-ink/70 italic">
-                And science in general
+                From Sonnet 3.5 to now
               </h2>
             </motion.div>
 
@@ -50,9 +97,9 @@ export function TitleSlide({ step: _step }: { step: number }) {
             >
               <span className="text-ink">Daniel Murnane</span>
               <span className="text-ink/40">·</span>
-              <span>Niels Bohr Institute</span>
+              <span>Halfspace</span>
               <span className="text-ink/40">·</span>
-              <span>Subatomic Physics</span>
+              <span>Niels Bohr Institute</span>
             </motion.div>
           </div>
 

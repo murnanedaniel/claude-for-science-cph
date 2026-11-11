@@ -30,6 +30,7 @@ import { Platform2028 } from "@/components/scenes/Platform2028";
 import { ColliderLabLaunch } from "@/components/scenes/ColliderLabLaunch";
 import { Deliverables2026 } from "@/components/scenes/Deliverables2026";
 import { LoopsViz } from "@/components/scenes/LoopsViz";
+import { AboutMe } from "@/components/scenes/AboutMe";
 
 export type SceneComponent = (props: {
   step: number;
@@ -40,6 +41,7 @@ export type SceneComponent = (props: {
 // deck (Stage) and the chrome-less /embed route used by the reading article.
 export const SCENE_COMPONENTS: Partial<Record<SceneId, SceneComponent>> = {
   title: TitleSlide,
+  aboutMe: AboutMe as unknown as SceneComponent,
   rateRamp: RateRamp,
   gnnSolution: GnnSolution,
   speedJourney: SpeedJourney,
