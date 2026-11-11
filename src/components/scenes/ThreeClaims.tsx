@@ -21,7 +21,7 @@ export function ThreeClaims({ step }: { step: number }) {
             </div>
             <blockquote className="mt-[2vh] text-[clamp(20px,2vw,34px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>&ldquo;{claim.quote}&rdquo;</blockquote>
             <p className="mt-[2vh] font-mono text-[clamp(10px,0.95vw,16px)] opacity-60">{claim.who}</p>
-            {step === index + 1 && <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-[3vh] border-t border-[#14141420] pt-[2vh] text-[clamp(14px,1.4vw,23px)] leading-relaxed">{claim.explanation}</motion.p>}
+            {step >= index + 1 && <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-[3vh] border-t border-[#14141420] pt-[2vh] text-[clamp(13px,1.25vw,20px)] leading-relaxed">{claim.explanation}</motion.p>}
           </div>
         ))}
       </div>
