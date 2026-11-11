@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono, EB_Garamond } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/geist.woff2",
+const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
-const geistMono = localFont({
-  src: "./fonts/geist-mono.woff2",
+const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
-const ebGaramond = localFont({
-  src: "./fonts/eb-garamond.woff2",
+const ebGaramond = EB_Garamond({
   variable: "--font-serif",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Talk title",
-  description: "Venue · date",
+  title: "AI in Research — ETH Zürich 2026",
+  description: "Agentic AI for Particle Physics · ETH Zürich mini-workshop",
 };
 
 export default function RootLayout({
@@ -32,7 +32,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${ebGaramond.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-ink">
+      {/* No body-level overflow-hidden: the deck (Stage) and /embed clip
+          themselves (w-screen h-screen overflow-hidden), while /article needs
+          the document to scroll. */}
+      <body className="min-h-full flex flex-col bg-black text-zinc-100">
         {children}
       </body>
     </html>

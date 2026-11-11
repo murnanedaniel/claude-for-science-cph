@@ -33,7 +33,60 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# vercel
+.vercel
 
-# screenshots from scripts/shoot.mjs
-/shots/
-tsconfig.tsbuildinfo
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# ---- sensitive-content safety net ----
+# Artifacts/script/notes live OUTSIDE this repo by design.
+# These rules catch accidental copies ending up inside stage/.
+
+# Claude Code / IDE / MCP local state
+/.claude/
+**/.claude/
+.cursor/
+.vscode/
+.idea/
+*.jsonl
+
+# Secrets & tokens
+**/*secret*
+**/*private*
+**/*credential*
+**/*.env
+.anthropic*
+.openai*
+*.pem
+*.key
+
+# Paper / presentation drafts
+*.pdf
+*.tex
+*.bib
+*.docx
+*.pptx
+*.pages
+
+# Research data / scratch directories
+/artifacts/
+/script/
+/notes/
+/drafts/
+/plots/
+/figures/
+/data/
+/scratch/
+*.h5
+*.root
+*.npz
+*.npy
+*.parquet
+*.csv
+*.tsv
+*.slurm.out
+slurm-*.out
+sacct*.txt
+scripts/phase_a/__pycache__/

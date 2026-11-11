@@ -15,9 +15,7 @@ const REWIND_KEYS = new Set(["ArrowLeft", "ArrowUp", "PageUp", "Backspace", "Bro
 
 export function useKeyboard(h: Handlers) {
   const ref = useRef(h);
-  useEffect(() => {
-    ref.current = h;
-  });
+  ref.current = h;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -38,5 +36,5 @@ export function useKeyboard(h: Handlers) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []); // stable: never re-registers
+  }, []); // stable — never re-registers
 }

@@ -30,7 +30,7 @@ export function PresenterClock({ elapsed, sceneIdx, stepIdx, fallback, running }
         <span>left {formatMMSS(remaining)}</span>
       </div>
       <div className="flex items-center gap-3 mt-1">
-        <span className="text-zinc-500">{scene.part}</span>
+        <span className="text-zinc-500">act {scene.act}</span>
         <span className="text-zinc-200">{scene.label}</span>
         <span className="text-zinc-600">[{sceneIdx + 1}/{SCENES.length}]</span>
       </div>

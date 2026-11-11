@@ -1,57 +1,105 @@
-// The storyboard. One row per scene, in talk order. Single source of truth for
-// order, reveal steps and time budget. 15 minutes = 900 s, then 5 min questions.
-// line: the one sentence said on this scene. Skeleton: scenes render as
-// placeholders (src/content/skeleton.ts) until each is built or ported.
+export type SceneId =
+  | "title"
+  | "rateRamp"
+  | "gnnSolution"
+  | "speedJourney"
+  | "loopsViz"
+  | "quirksAside"
+  | "innerLoopHistory"
+  | "loopsVizMiddle"
+  | "easter1Release"
+  | "easter2Bug"
+  | "rorvigRunPhone"
+  | "easter5Dispatch"
+  | "easter3SmokingGun"
+  | "easter4CrossEval"
+  | "easter6Architecture"
+  | "easter7Discovery"
+  | "easter8Reveal"
+  | "easter9Thesis"
+  | "easter10WhyPossible"
+  | "statsFeint"
+  // ── Part 2 · flip to 2028 (the concept) ──
+  | "calendarFlip2028"
+  | "platform2028"
+  | "loopsVizOuter"
+  | "nbiGraph"
+  | "matchmaking"
+  | "faculty2031Teaching"
+  | "phdPedagogy"
+  // ── Part 2 climax · flip to 2031 (the platform, external) ──
+  | "calendarFlip2031"
+  | "colliderLabLaunch"
+  // ── Part 3 · flip back to 2026 (the real deliverables) ──
+  | "calendarFlip2026back"
+  | "deliverables2026"
+  | "nbiAINativeCallToAction"
+  | "claudeFinalSlide"
+  // ── Claude for Science, Copenhagen (new scenes) ──
+  | "aboutMe"
+  | "calendarFlipNow"
+  | "projectWall"
+  | "chatlas"
+  | "hep4m"
+  | "scienceDash"
+  | "kitIntro"
+  | "kitProjects"
+  | "kitTimeline"
+  | "galacticPaper"
+  | "modelsBetter"
+  | "lessons"
+  | "thanks";
 
-export type Theme = "light";
+export type Theme = "dark" | "light";
 
 export type Scene = {
-  id: string;
+  id: SceneId;
   label: string;
-  part: string;
-  theme: Theme;
-  steps: number;
+  act: 1 | 2 | 3 | 4;
   startSec: number;
   endSec: number;
-  line: string;
+  steps: number;
+  // theme is derived from `act` in Stage.tsx (act >= 3 → light).
+  theme?: Theme;
 };
 
-export const SCENES = [
-  // Open (50 s)
-  { id: "title",          label: "Title",                        part: "open",    theme: "light", steps: 1, startSec: 0,   endSec: 30,  line: "Who I am." },
-  { id: "halfspace",      label: "Halfspace",                    part: "open",    theme: "light", steps: 2, startSec: 30,  endSec: 50,  line: "What Halfspace is, why it matters that I work there, what I do there." },
-  // 1. LHC tracking (2 min)
-  { id: "rate",           label: "40 million per second",        part: "tracking", theme: "light", steps: 3, startSec: 50,  endSec: 95,  line: "Every 25 ns the beams cross; we keep a tiny fraction, and decide in microseconds." },
-  { id: "graph",          label: "Tracks as a graph",            part: "tracking", theme: "light", steps: 2, startSec: 95,  endSec: 135, line: "Treat the hits as a graph, and a GNN finds the tracks." },
-  { id: "speed",          label: "60 s to 100 kHz",              part: "tracking", theme: "light", steps: 2, startSec: 135, endSec: 170, line: "It took years of work to make that fast enough. Hold on to tracking; we come back to it." },
-  // 2. Three loops (90 s)
-  { id: "loops",          label: "Three loops",                  part: "loops",   theme: "light", steps: 3, startSec: 170, endSec: 260, line: "Inner loop: one experiment. Middle loop: experiments to a paper. Outer loop: running a programme." },
-  // 3. The Easter paper (2 min)
-  { id: "easter-bug",     label: "Easter: the bug email",        part: "easter",  theme: "light", steps: 2, startSec: 260, endSec: 300, line: "Seven months ago: a bug report on our tracking dataset, the day after release." },
-  { id: "easter-phone",   label: "Easter: agents from my phone", part: "easter",  theme: "light", steps: 2, startSec: 300, endSec: 345, line: "Over Easter, from my phone, agents found the cause: the beam spot had moved." },
-  { id: "easter-paper",   label: "Easter: 16 pages",             part: "easter",  theme: "light", steps: 1, startSec: 345, endSec: 380, line: "Four days later: a 16-page paper. That was the middle loop, closed once." },
-  // 4. Seven months on (90 s)
-  { id: "since",          label: "Seven months on",              part: "since",   theme: "light", steps: 3, startSec: 380, endSec: 415, line: "Fast forward through seven months: what else got built." },
-  { id: "chatlas",        label: "ChATLAS",                      part: "since",   theme: "light", steps: 2, startSec: 415, endSec: 440, line: "ChATLAS: how 6,000 physicists find their own documentation." },
-  { id: "hep4m",          label: "HEP4M paper",                  part: "since",   theme: "light", steps: 2, startSec: 440, endSec: 455, line: "A prompting-for-particle-physics paper, almost entirely written with Claude Code." },
-  { id: "sciencedash",    label: "ScienceDash",                  part: "since",   theme: "light", steps: 2, startSec: 455, endSec: 470, line: "And I run all of it from ScienceDash." },
-  // 5. KIT: five projects in six hours (5 min)
-  { id: "kit",            label: "October: KIT",                 part: "kit",     theme: "light", steps: 2, startSec: 470, endSec: 500, line: "October 2026: teaching at KIT, I ran five real, paper-ready projects in six hours." },
-  { id: "kit-projects",   label: "The five projects",            part: "kit",     theme: "light", steps: 5, startSec: 500, endSec: 620, line: "Halos, fine-tuning, RANGE, a new universe, tracking: one per click." },
-  { id: "kit-scorecard",  label: "One of five",                  part: "kit",     theme: "light", steps: 3, startSec: 620, endSec: 680, line: "One worked. The failures sat around the science, not in it." },
-  { id: "galactic-paper", label: "Galactic: where it got to",    part: "kit",     theme: "light", steps: 2, startSec: 680, endSec: 740, line: "Galactic clustering: paper to benchmark to draft in an afternoon." },
-  { id: "galactic-plots", label: "Galactic: are you really sure?", part: "kit",   theme: "light", steps: 3, startSec: 740, endSec: 800, line: "The first speed-up was 390x. I asked 'are you really sure?' and it found an untuned baseline." },
-  // 6. Takeaways (85 s)
-  { id: "better",         label: "Are models getting better?",   part: "close",   theme: "light", steps: 2, startSec: 800, endSec: 830, line: "Yes: I push back on the agent less than I did in May." },
-  { id: "patterns",       label: "Patterns that work",           part: "close",   theme: "light", steps: 3, startSec: 830, endSec: 865, line: "Dry-run the night before, write down every human step, check every claim." },
-  { id: "platform",       label: "The platform",                 part: "close",   theme: "light", steps: 1, startSec: 865, endSec: 885, line: "Experiments, papers, programme: one platform for all three loops." },
-  { id: "thanks",         label: "Questions",                    part: "close",   theme: "light", steps: 1, startSec: 885, endSec: 900, line: "Thank you. Questions." },
-] as const satisfies readonly Scene[];
+// Claude for Science, NBI, 12 Nov 2026. 15 minutes + 5 questions.
+// Acts 1-2 dark (the LHC and the Easter paper), acts 3-4 light (since then).
+export const SCENES: Scene[] = [
+  // ── Act 1 · who I am, and why tracking (dark) ──
+  { id: "title",            label: "Title",                               act: 1, startSec: 0,   endSec: 25,  steps: 1 },
+  { id: "aboutMe",          label: "About me · Halfspace, NBI, CERN, Berkeley", act: 1, startSec: 25,  endSec: 50,  steps: 3 },
+  { id: "rateRamp",         label: "40 million per second",               act: 1, startSec: 50,  endSec: 85,  steps: 6 },
+  { id: "gnnSolution",      label: "Graph tracking on a real event",      act: 1, startSec: 85,  endSec: 125, steps: 4 },
+  { id: "speedJourney",     label: "From 60 s to 100 kHz",                act: 1, startSec: 125, endSec: 150, steps: 4 },
+  // ── Act 2 · three loops, and the Easter paper (dark) ──
+  { id: "loopsVizOuter",    label: "Three loops on one slide",            act: 2, startSec: 150, endSec: 240, steps: 3 },
+  { id: "easter1Release",   label: "Easter · ColliderML release (simulated with Claude)", act: 2, startSec: 240, endSec: 255, steps: 1 },
+  { id: "easter2Bug",       label: "Easter · bug email",                  act: 2, startSec: 255, endSec: 275, steps: 1 },
+  { id: "easter3SmokingGun",label: "Easter · beamspot + smoking gun",     act: 2, startSec: 275, endSec: 300, steps: 3 },
+  { id: "easter5Dispatch",  label: "Easter · dispatching from my phone",  act: 2, startSec: 300, endSec: 335, steps: 2 },
+  { id: "easter8Reveal",    label: "Easter · the paper · 16 pages",       act: 2, startSec: 335, endSec: 370, steps: 3 },
+  // ── Act 3 · the seven months since (light) ──
+  { id: "calendarFlipNow",  label: "Flip · April → November 2026",        act: 3, startSec: 370, endSec: 378, steps: 1 },
+  { id: "projectWall",      label: "All the projects · roulette",         act: 3, startSec: 378, endSec: 420, steps: 3 },
+  { id: "chatlas",          label: "ChATLAS · last week",                 act: 3, startSec: 420, endSec: 445, steps: 2 },
+  { id: "hep4m",            label: "HEP4M · months of back and forth",    act: 3, startSec: 445, endSec: 460, steps: 2 },
+  { id: "scienceDash",      label: "ScienceDash runs all of it",          act: 3, startSec: 460, endSec: 480, steps: 2 },
+  // ── Act 4 · KIT, October 2026 (light) ──
+  { id: "kitIntro",         label: "KIT · five projects in six hours",    act: 4, startSec: 480, endSec: 505, steps: 2 },
+  { id: "kitProjects",      label: "The projects, one infographic each",  act: 4, startSec: 505, endSec: 625, steps: 5 },
+  { id: "kitTimeline",      label: "Six hours, animated · where each froze", act: 4, startSec: 625, endSec: 745, steps: 5 },
+  { id: "galacticPaper",    label: "Galactic clustering · how close to a paper", act: 4, startSec: 745, endSec: 805, steps: 3 },
+  { id: "modelsBetter",     label: "Are the models getting better?",      act: 4, startSec: 805, endSec: 845, steps: 2 },
+  { id: "lessons",          label: "Lessons",                             act: 4, startSec: 845, endSec: 885, steps: 3 },
+  { id: "thanks",           label: "Questions",                           act: 4, startSec: 885, endSec: 900, steps: 1 },
+];
 
-export type SceneId = (typeof SCENES)[number]["id"];
-export const TOTAL_SEC = SCENES[SCENES.length - 1].endSec;
+export const TOTAL_SEC = 900;
 
 export function formatMMSS(sec: number) {
   const s = Math.max(0, Math.floor(sec));
-  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m}:${String(r).padStart(2, "0")}`;
 }

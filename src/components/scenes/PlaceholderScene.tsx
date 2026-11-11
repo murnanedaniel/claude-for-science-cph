@@ -1,28 +1,27 @@
 "use client";
 
-import { SceneFrame } from "@/components/kit/SceneFrame";
-import { SKELETON } from "@/content/skeleton";
-import { SCENES, formatMMSS, type SceneId } from "@/lib/timeline";
+import { motion } from "motion/react";
+import type { SceneId } from "@/lib/timeline";
 
-// Skeleton scene: shows the headline, the plan revealed per step, the line to
-// say, and where the real scene will be ported from.
-export function placeholder(id: SceneId) {
-  return function Placeholder({ step }: { step: number }) {
-    const s = SKELETON[id]!;
-    const scene = SCENES.find((x) => x.id === id)!;
-    return (
-      <SceneFrame headline={s.headline} source={`skeleton · from: ${s.from}`}>
-        <div className="flex h-full flex-col justify-center gap-[3vh] px-[5vw]">
-          <ul className="t-body space-y-[1.5vh]">
-            {s.plan.map((p, i) => (
-              <li key={i} style={{ opacity: i <= step ? 1 : 0.15 }}>{p}</li>
-            ))}
-          </ul>
-          <p className="t-label text-faint">
-            {formatMMSS(scene.startSec)}–{formatMMSS(scene.endSec)} · say: {scene.line}
-          </p>
+type Props = { id: SceneId; label: string; act: 1 | 2 | 3 | 4 };
+
+export function PlaceholderScene({ id, label, act }: Props) {
+  return (
+    <motion.div
+      className="absolute inset-0 canvas-grid vignette flex items-center justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.6 } }}
+      exit={{ opacity: 0, transition: { duration: 0.4 } }}
+    >
+      <div className="text-center max-w-2xl px-8">
+        <div className="text-[clamp(36px,5vw,72px)] font-serif italic text-zinc-100 leading-tight">
+          {label}
         </div>
-      </SceneFrame>
-    );
-  };
+        <div className="mt-6 font-mono text-[11px] text-zinc-600">scene: {id}</div>
+        <div className="mt-2 text-zinc-500 text-sm">
+          placeholder — will be built once the script draft lands
+        </div>
+      </div>
+    </motion.div>
+  );
 }

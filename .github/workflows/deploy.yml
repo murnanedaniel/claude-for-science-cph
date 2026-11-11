@@ -30,7 +30,7 @@ jobs:
       - name: Build static export
         env:
           NEXT_OUTPUT_EXPORT: "true"
-          NEXT_BASE_PATH: "/${{ github.event.repository.name }}"
+          NEXT_BASE_PATH: "/claude-for-science-cph"
         run: npm run build
 
       - name: Ensure .nojekyll

@@ -1,20 +1,22 @@
 {
-  "name": "keynote-deck",
+  "name": "stage",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
-    "build:export": "NEXT_OUTPUT_EXPORT=true next build --webpack",
-    "build:pages": "NEXT_OUTPUT_EXPORT=true NEXT_BASE_PATH=/keynote-deck next build --webpack",
-    "shoot": "node scripts/shoot.mjs",
+    "build": "next build",
+    "build:export": "NEXT_OUTPUT_EXPORT=true next build",
+    "build:pages": "NEXT_OUTPUT_EXPORT=true NEXT_BASE_PATH=/NBI-AI-future next build",
+    "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@types/three": "^0.184.0",
     "motion": "^12.38.0",
     "next": "16.2.4",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
