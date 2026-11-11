@@ -1,8 +1,8 @@
 export const TALK = {
-  title: "How fast we got, how fast we're getting.",
-  subtitle: "One idea per scene, a picture before words.",
+  title: "Seven months of doing physics with Claude",
+  subtitle: "From one Easter paper to five projects in six hours",
   speaker: "Daniel Murnane",
-  affiliation: "Niels Bohr Institute",
-  venue: "Venue",
-  date: "Date",
+  affiliation: "Niels Bohr Institute · Halfspace",
+  venue: "Claude for Science, Niels Bohr Institute",
+  date: "12 November 2026",
 } as const;
