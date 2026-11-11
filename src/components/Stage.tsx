@@ -7,8 +7,6 @@ import { useKeyboard } from "@/lib/useKeyboard";
 import { useElapsed } from "@/lib/useElapsed";
 import { PresenterClock } from "./PresenterClock";
 import { PaperRollOverlay } from "./PaperRollOverlay";
-import { TempHud } from "./TempHud";
-import { ArticlePromo } from "./ArticlePromo";
 import { PlaceholderScene } from "./scenes/PlaceholderScene";
 import { SCENE_COMPONENTS, type SceneComponent } from "@/lib/sceneRegistry";
 
@@ -100,12 +98,14 @@ export function Stage() {
   // scene 1 (rateRamp) steps 0–4: rolled + settled tube (~0.98)
   // scene 1 step 5 (grid) + later scenes: fully faded (1.0)
   const rollTarget = useMemo(() => {
-    if (sceneIdx === 0) return 0;
-    if (sceneIdx === 1 && stepIdx < 5) return 0.98;
+    // title and aboutMe share the flat paper; it rolls up into the beam on rateRamp.
+    const id = SCENES[sceneIdx].id;
+    if (id === "title" || id === "aboutMe") return 0;
+    if (id === "rateRamp" && stepIdx < 5) return 0.98;
     return 1.0;
   }, [sceneIdx, stepIdx]);
   // Duration: slow rolling-in from title (1.8s), faster transitions afterward.
-  const rollDurationMs = sceneIdx === 1 && stepIdx === 0 && rollTarget === 0.98 ? 1800 : 900;
+  const rollDurationMs = SCENES[sceneIdx].id === "rateRamp" && stepIdx === 0 && rollTarget === 0.98 ? 1800 : 900;
 
   const rendered = useMemo(() => {
     const Comp = SCENE_COMPONENTS[scene.id];
@@ -126,9 +126,7 @@ export function Stage() {
 
       <PaperRollOverlay target={rollTarget} durationMs={rollDurationMs} />
 
-      <TempHud theme={theme} />
 
-      <ArticlePromo />
 
       {clockVisible && (
         <button
