@@ -13,7 +13,7 @@ export function LessonCard({ n, text, sub, step }: StepProps & { n: number; text
         <motion.h1 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-[clamp(36px,4.4vw,72px)] leading-[1.15]" style={{ fontFamily: "var(--font-serif)" }}>{text}</motion.h1>
         {sub && <motion.p initial={false} animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 8 }} aria-hidden={step < 1} className="mt-[4vh] max-w-[1050px] text-[clamp(20px,2.1vw,34px)] leading-relaxed text-[#625d54]">{sub}</motion.p>}
       </div>
-      <p className="text-[clamp(10px,0.85vw,14px)] text-[#625d54]" style={{ fontFamily: "var(--font-geist-mono)" }}>Source: my lessons from working with Claude</p>
+      <p className="text-[clamp(10px,0.85vw,14px)] text-[#625d54]" style={{ fontFamily: "var(--font-geist-mono)" }}></p>
     </section>
   );
 }

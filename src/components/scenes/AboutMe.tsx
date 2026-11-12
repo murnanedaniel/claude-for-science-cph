@@ -30,7 +30,7 @@ function BankingAgent({ step }: { step: number }) {
       <Label x={112} y={66} lines={["Customer · chat"]} />
       <rect x={35} y={210} width={150} height={70} rx={14} fill="#e5e2d5" stroke={ink} />
       <Label x={110} y={239} lines={["Banking agent", "LLM"]} />
-      <Label x={92} y={118} lines={["“Pay my rent”"]} />
+      <Label x={50} y={140} lines={["“Pay my", "rent”"]} />
       {tools.map(tool => <g key={tool.title}><rect x={410} y={tool.y - 20} width={180} height={40} rx={8} fill={paper} stroke={ink} /><Label x={500} y={tool.y + 4} lines={[tool.title]} /></g>)}
     </motion.g>
     {step === 0 && <g fill="#526c76">

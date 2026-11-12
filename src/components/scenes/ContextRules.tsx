@@ -25,10 +25,8 @@ export function ContextRules({ step }: { step: number }) {
           </dl>
           <p className="mt-[3vh] border-t border-[#14141422] pt-[3vh] text-[clamp(17px,1.7vw,28px)]">a PreToolUse guard hook</p>
         </div> : <div className="text-[clamp(27px,3vw,48px)] leading-snug" style={{ fontFamily: "var(--font-serif)" }}>
-          <p>The lab ran for hours without tool prompts.</p>
-          <p className="mt-[3vh]">Its last two turn results show 21 background subagents spawned with none refused.</p>
-          <p className="mt-[3vh]">Secrecy held. The orchestrator never read universe content and diagnosed from status words only.</p>
-          <p className="mt-[3vh] text-[0.55em] text-[#625d54]">Only the most recent results were checked, not every turn.</p>
+          <p>The lab ran for hours without asking me to approve a tool.</p>
+          <p className="mt-[3vh]">And the orchestrator never read the hidden universe. It worked from status messages only.</p>
         </div>}
       </motion.div>
       <p className="text-[clamp(10px,0.85vw,14px)] text-[#625d54]" style={{ fontFamily: "var(--font-geist-mono)" }}>My CLAUDE.md, memory and skills; Basic Model lab settings, KIT course 22 Oct 2026 (post-mortem)</p>
