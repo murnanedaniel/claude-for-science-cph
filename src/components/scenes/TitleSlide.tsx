@@ -82,10 +82,10 @@ export function TitleSlide({ step: _step }: { step: number }) {
             </motion.div>
           </div>
 
-          <div className="absolute bottom-[5%] right-[5%] flex gap-[2.5%]" style={{ fontFamily: "var(--font-geist-mono)" }}>
+          <div className="absolute top-[9%] right-[5%] flex gap-[2.5%]" style={{ fontFamily: "var(--font-geist-mono)" }}>
             {[["/qr-talk.svg", "These slides"], ["/qr-kit-course.svg", "The KIT course"]].map(([src, label]) => (
               <div key={src} className="flex flex-col items-center gap-1">
-                <img src={asset(src)} alt={`QR code: ${label}`} className="w-[clamp(64px,7.5vw,120px)]" />
+                <img src={asset(src)} alt={`QR code: ${label}`} className="w-[clamp(60px,6vw,96px)]" />
                 <span className="text-[clamp(9px,0.75vw,12px)] text-ink/60">{label}</span>
               </div>
             ))}
