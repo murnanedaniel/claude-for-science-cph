@@ -20,13 +20,14 @@ import { LabKit } from "./r9/LabKit";
 import { CheckLadder } from "./r35/CheckLadder";
 import { ErcR32 } from "./r32/ErcR32";
 import { JudgePanelR3 } from "./r36/JudgePanelR3";
+import { HomeHardware } from "./r19/HomeHardware";
 
 function ChatlasWithLatest({ step }: { step: number }) {
   return step < 3 ? <ChatlasDetailR39 step={step} /> : <ChatlasLatest />;
 }
 
 export function chatlas({ step }: { step: number }) {
-  return <KitBeat title={"How does chATLAS find an answer?"} source={"chATLAS draft paper (ATLAS ML Forum, Sep 2026), slides 3, 7 and 10; step 3 plot redrawn from slide 7 values read by eye; public in about two weeks"} Scene={ChatlasWithLatest} step={step} />;
+  return <KitBeat title={"chATLAS answers from ATLAS docs and drafts merge requests"} source={"chATLAS draft paper (ATLAS ML Forum, Sep 2026), slides 3, 7 and 10; step 3 plot redrawn from slide 7 values read by eye"} Scene={ChatlasWithLatest} step={step} />;
 }
 
 export function scienceDash({ step }: { step: number }) {
@@ -95,4 +96,8 @@ export function ercProposal({ step }: { step: number }) {
 
 export function ercJudges({ step }: { step: number }) {
   return <KitBeat title={"Three gpt-6-astra judges ranked past ERC proposals"} source={"My mock ERC Step 1 panel, 7 Oct 2026: judges = gpt-6-astra run through the Codex CLI, three personas; 3 anchors = real past ERC proposals by other applicants, outcomes shown; 11 held-out real past ERC proposals with known outcomes, scored blind, one of them my own 2025 StG; AUC on mean rank, bootstrap 95% CI, n = 11 (7 funded, 4 not); own proposal placed at 76 vs real Step 1 range 78-87"} Scene={JudgePanelR3} step={step} />;
+}
+
+export function homeHardware({ step }: { step: number }) {
+  return <KitBeat title={"What a home server needs to be"} source={"First image: generated, not real · second: my home server, Oct 2026 · step 3: my memory notes (Perlmutter keeper via scrontab every 5 min, back by itself after the 21 Oct maintenance; Polaris as course backup; home server 4 cores/7 GB, no heavy compute, ScienceDash, Tailscale to phone) and my Claude Code instructions (Codex via ChatGPT subscription, used for second opinions and review)"} Scene={HomeHardware} step={step} />;
 }

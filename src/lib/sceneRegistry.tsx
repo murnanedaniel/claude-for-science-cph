@@ -69,6 +69,7 @@ export const SCENE_COMPONENTS: Partial<Record<SceneId, SceneComponent>> = {
   modelsBetter: KitScenes.modelsBetter as unknown as SceneComponent,
 
   title: TitleSlide,
+  homeHardware: KitScenes.homeHardware as unknown as SceneComponent,
   contextSecondBrain: ContextSecondBrain as unknown as SceneComponent,
   ercJudges: KitScenes.ercJudges as unknown as SceneComponent,
   aboutPhysics: AboutPhysics as unknown as SceneComponent,

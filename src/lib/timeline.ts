@@ -61,6 +61,7 @@ export type SceneId =
   | "hamletMeet"
   | "hamlet"
   | "contextRules"
+  | "homeHardware"
   | "contextSecondBrain"
   | "ercJudges"
   | "reviewFinding"
@@ -137,47 +138,48 @@ export const SCENES: Scene[] = [
   { id: "lesson2", label: "Lesson 2 · Remote Control is the centre", act: 2, startSec: 255, endSec: 270, steps: 2, lesson: 2 },
   { id: "rorvigRunPhone", label: "Easter · from my phone", act: 2, startSec: 270, endSec: 292, steps: 3, lesson: 2 },
   { id: "easter5Dispatch", label: "Easter · terminal, phone, GPUs", act: 2, startSec: 292, endSec: 307, steps: 2, lesson: 2 },
-  { id: "remoteHub", label: "One session reaches everything", act: 2, startSec: 307, endSec: 337, steps: 4, lesson: 2 },
+  { id: "homeHardware", label: "What a home server needs to be", act: 2, startSec: 307, endSec: 329, steps: 3, lesson: 2 },
+  { id: "remoteHub", label: "One session reaches everything", act: 2, startSec: 329, endSec: 359, steps: 4, lesson: 2 },
 
   // ── Act 3 · Lesson 1 again · the KIT afternoon ──
-  { id: "calendarFlipNow", label: "Flip · April → November 2026", act: 3, startSec: 337, endSec: 345, steps: 1, lesson: 1, lessonNote: "again" },
-  { id: "kitContext", label: "KIT · what I tried", act: 3, startSec: 345, endSec: 360, steps: 2, lesson: 1, lessonNote: "again" },
-  { id: "kitIntro", label: "KIT · what we cooked, and when", act: 3, startSec: 360, endSec: 375, steps: 2, lesson: 1, lessonNote: "again" },
-  { id: "kitGalactic", label: "Project · dark-matter halos", act: 3, startSec: 375, endSec: 397, steps: 3, lesson: 1, lessonNote: "again" },
-  { id: "galacticPaper", label: "Where the halo finder got to", act: 3, startSec: 397, endSec: 419, steps: 3, lesson: 1, lessonNote: "again" },
-  { id: "kitRange", label: "Project · beat RANGE", act: 3, startSec: 419, endSec: 441, steps: 3, lesson: 1, lessonNote: "again" },
-  { id: "kitUniverse", label: "Project 4 · a new universe", act: 3, startSec: 441, endSec: 471, steps: 4, lesson: 1, lessonNote: "again" },
-  { id: "kitUniverseHistory", label: "Project 4 · from data to laws", act: 3, startSec: 471, endSec: 486, steps: 2, lesson: 1, lessonNote: "again" },
-  { id: "kitUniversePipeline", label: "Project 4 · building a universe", act: 3, startSec: 486, endSec: 508, steps: 3, lesson: 1, lessonNote: "again" },
-  { id: "kitUniverseLab", label: "Project 4 · the agent lab", act: 3, startSec: 508, endSec: 516, steps: 1, lesson: 1, lessonNote: "again" },
-  { id: "kitUniverseLadder", label: "Project 4 · the check ladder", act: 3, startSec: 516, endSec: 538, steps: 3, lesson: 1, lessonNote: "again" },
-  { id: "basicModelResult", label: "Project 4 · how far it got", act: 3, startSec: 538, endSec: 553, steps: 2, lesson: 1, lessonNote: "again" },
+  { id: "calendarFlipNow", label: "Flip · April → November 2026", act: 3, startSec: 359, endSec: 367, steps: 1, lesson: 1, lessonNote: "again" },
+  { id: "kitContext", label: "KIT · what I tried", act: 3, startSec: 367, endSec: 382, steps: 2, lesson: 1, lessonNote: "again" },
+  { id: "kitIntro", label: "KIT · what we cooked, and when", act: 3, startSec: 382, endSec: 397, steps: 2, lesson: 1, lessonNote: "again" },
+  { id: "kitGalactic", label: "Project · dark-matter halos", act: 3, startSec: 397, endSec: 419, steps: 3, lesson: 1, lessonNote: "again" },
+  { id: "galacticPaper", label: "Where the halo finder got to", act: 3, startSec: 419, endSec: 441, steps: 3, lesson: 1, lessonNote: "again" },
+  { id: "kitRange", label: "Project · beat RANGE", act: 3, startSec: 441, endSec: 463, steps: 3, lesson: 1, lessonNote: "again" },
+  { id: "kitUniverse", label: "Project 4 · a new universe", act: 3, startSec: 463, endSec: 493, steps: 4, lesson: 1, lessonNote: "again" },
+  { id: "kitUniverseHistory", label: "Project 4 · from data to laws", act: 3, startSec: 493, endSec: 508, steps: 2, lesson: 1, lessonNote: "again" },
+  { id: "kitUniversePipeline", label: "Project 4 · building a universe", act: 3, startSec: 508, endSec: 530, steps: 3, lesson: 1, lessonNote: "again" },
+  { id: "kitUniverseLab", label: "Project 4 · the agent lab", act: 3, startSec: 530, endSec: 538, steps: 1, lesson: 1, lessonNote: "again" },
+  { id: "kitUniverseLadder", label: "Project 4 · the check ladder", act: 3, startSec: 538, endSec: 560, steps: 3, lesson: 1, lessonNote: "again" },
+  { id: "basicModelResult", label: "Project 4 · how far it got", act: 3, startSec: 560, endSec: 575, steps: 2, lesson: 1, lessonNote: "again" },
 
   // ── Act 4 · Lesson 3 · context ──
-  { id: "lesson3", label: "Lesson 3 · context everywhere", act: 4, startSec: 553, endSec: 568, steps: 2, lesson: 3 },
-  { id: "contextRules", label: "What context my agents get", act: 4, startSec: 568, endSec: 590, steps: 3, lesson: 3 },
-  { id: "contextSecondBrain", label: "ScienceDash · every past session is searchable", act: 4, startSec: 590, endSec: 612, steps: 3, lesson: 3 },
+  { id: "lesson3", label: "Lesson 3 · context everywhere", act: 4, startSec: 575, endSec: 590, steps: 2, lesson: 3 },
+  { id: "contextRules", label: "What context my agents get", act: 4, startSec: 590, endSec: 612, steps: 3, lesson: 3 },
+  { id: "contextSecondBrain", label: "ScienceDash · every past session is searchable", act: 4, startSec: 612, endSec: 634, steps: 3, lesson: 3 },
 
   // ── Act 4 · Lesson 4 · another model family ──
-  { id: "lesson4", label: "Lesson 4 · another model family reviews", act: 4, startSec: 612, endSec: 627, steps: 2, lesson: 4 },
-  { id: "ercJudges", label: "ERC · a panel of outside-family judges", act: 4, startSec: 627, endSec: 649, steps: 3, lesson: 4 },
+  { id: "lesson4", label: "Lesson 4 · another model family reviews", act: 4, startSec: 634, endSec: 649, steps: 2, lesson: 4 },
+  { id: "ercJudges", label: "ERC · a panel of outside-family judges", act: 4, startSec: 649, endSec: 671, steps: 3, lesson: 4 },
 
   // ── Act 4 · Lesson 5 · collaborations ──
-  { id: "lesson5", label: "Lesson 5 · collaboration", act: 4, startSec: 649, endSec: 657, steps: 1, lesson: 5 },
-  { id: "hamlet", label: "HAMLET · the brain", act: 4, startSec: 657, endSec: 672, steps: 2, lesson: 5 },
-  { id: "hamletMeet", label: "HAMLET · on attendees' phones", act: 4, startSec: 672, endSec: 694, steps: 3, lesson: 5 },
-  { id: "hamletPanel", label: "HAMLET · on the projector", act: 4, startSec: 694, endSec: 709, steps: 2, lesson: 5 },
-  { id: "projectWall", label: "The wall of projects", act: 4, startSec: 709, endSec: 724, steps: 2, lesson: 5 },
-  { id: "chatlas", label: "chATLAS · how it finds an answer", act: 4, startSec: 724, endSec: 754, steps: 4, lesson: 5 },
+  { id: "lesson5", label: "Lesson 5 · collaboration", act: 4, startSec: 671, endSec: 679, steps: 1, lesson: 5 },
+  { id: "hamlet", label: "HAMLET · the brain", act: 4, startSec: 679, endSec: 694, steps: 2, lesson: 5 },
+  { id: "hamletMeet", label: "HAMLET · on attendees' phones", act: 4, startSec: 694, endSec: 716, steps: 3, lesson: 5 },
+  { id: "hamletPanel", label: "HAMLET · on the projector", act: 4, startSec: 716, endSec: 731, steps: 2, lesson: 5 },
+  { id: "projectWall", label: "The wall of projects", act: 4, startSec: 731, endSec: 746, steps: 2, lesson: 5 },
+  { id: "chatlas", label: "chATLAS · how it finds an answer", act: 4, startSec: 746, endSec: 776, steps: 4, lesson: 5 },
 
   // ── Act 4 · Lesson 6 · docs ──
-  { id: "lesson6", label: "Lesson 6 · talk to Claude in a doc", act: 4, startSec: 754, endSec: 769, steps: 2, lesson: 6 },
+  { id: "lesson6", label: "Lesson 6 · talk to Claude in a doc", act: 4, startSec: 776, endSec: 791, steps: 2, lesson: 6 },
 
   // ── Act 4 · close ──
-  { id: "close", label: "Close", act: 4, startSec: 769, endSec: 777, steps: 1 },
+  { id: "close", label: "Close", act: 4, startSec: 791, endSec: 799, steps: 1 },
 ];
 
-export const TOTAL_SEC = 777;
+export const TOTAL_SEC = 799;
 
 export function formatMMSS(sec: number) {
   const s = Math.max(0, Math.floor(sec));

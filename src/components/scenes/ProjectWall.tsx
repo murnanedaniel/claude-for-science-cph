@@ -42,11 +42,12 @@ function Wall({ play }: { play: boolean }) {
         {titles.map((title, i) => (
           <motion.div key={title} className="relative flex items-center overflow-hidden rounded border p-[0.5vw] text-[clamp(8px,0.72vw,12px)] leading-tight"
             initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: settled && i !== winner ? 0.18 : 1, y: 0, scale: settled && i === winner ? 1.55 : 1,
+            animate={{ opacity: settled && i !== winner ? 0.18 : 1, y: 0,
+              boxShadow: settled && i === winner ? "0 0 0 3px #203e58" : "0 0 0 0px #203e58",
               backgroundColor: selected === i ? "#203e58" : "#fbf8f1", color: selected === i ? "#ffffff" : "#141414",
               borderColor: selected === i ? "#203e58" : "#14141422" }}
-            transition={{ opacity: { duration: 0.3, delay: play ? 0 : i * 0.025 }, y: { delay: play ? 0 : i * 0.025 }, scale: { duration: 0.5 }, backgroundColor: { duration: 0.06 }, color: { duration: 0.06 } }}
-            style={{ zIndex: selected === i ? 10 : 0, transformOrigin: i % 7 === 0 ? "left center" : "center" }}>
+            transition={{ opacity: { duration: 0.3, delay: play ? 0 : i * 0.025 }, y: { delay: play ? 0 : i * 0.025 }, boxShadow: { duration: 0.5 }, backgroundColor: { duration: 0.06 }, color: { duration: 0.06 } }}
+            style={{ zIndex: selected === i ? 10 : 0 }}>
             {title}
           </motion.div>
         ))}
