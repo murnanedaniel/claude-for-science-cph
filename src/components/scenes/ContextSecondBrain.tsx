@@ -63,6 +63,10 @@ export function ContextSecondBrain({ step }: { step: number }) {
             <div className="flex flex-col gap-[2.5vh] text-[clamp(16px,1.5vw,25px)] leading-snug">
               <p>ScienceDash is a dashboard I built. It holds my research projects and the transcript of every Claude Code session I run, on every machine, and any new session can query it.</p>
               <p className="text-[#625d54]">A walk through it: projects, one project&apos;s hypotheses, the agent settings, then a search over past sessions.</p>
+              <div className="flex items-center gap-[1.2vw]">
+                <img src={asset("/qr-sciencedash.svg")} alt="QR code: the ScienceDash docs" className="w-[clamp(72px,8vw,128px)]" />
+                <p className="text-[clamp(11px,0.95vw,16px)] text-[#625d54]" style={{ fontFamily: "var(--font-geist-mono)" }}>danielmurnane.com/sciencedash<br />docs and install guide</p>
+              </div>
             </div>
             <div className={frame}>
               <video

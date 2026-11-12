@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { asset } from "@/lib/asset";
 import { RotatingLoop } from "./RotatingLoop";
 
 // The paper-roll effect is no longer handled here — it lives in
@@ -79,6 +80,15 @@ export function TitleSlide({ step: _step }: { step: number }) {
               <span className="text-ink/40">·</span>
               <span>Niels Bohr Institute</span>
             </motion.div>
+          </div>
+
+          <div className="absolute bottom-[5%] right-[5%] flex gap-[2.5%]" style={{ fontFamily: "var(--font-geist-mono)" }}>
+            {[["/qr-talk.svg", "These slides"], ["/qr-kit-course.svg", "The KIT course"]].map(([src, label]) => (
+              <div key={src} className="flex flex-col items-center gap-1">
+                <img src={asset(src)} alt={`QR code: ${label}`} className="w-[clamp(64px,7.5vw,120px)]" />
+                <span className="text-[clamp(9px,0.75vw,12px)] text-ink/60">{label}</span>
+              </div>
+            ))}
           </div>
 
         </div>
