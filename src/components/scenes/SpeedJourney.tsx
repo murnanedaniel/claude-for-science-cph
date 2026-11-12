@@ -46,7 +46,6 @@ export function SpeedJourney({ step }: { step: number }) {
           </div>
           <div className="font-mono text-[11px] text-zinc-500 text-right">
             <div>time per event · ATLAS tracking</div>
-            <div>see FACTS.md for exact citations</div>
           </div>
         </div>
 

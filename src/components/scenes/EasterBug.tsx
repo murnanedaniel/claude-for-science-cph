@@ -85,7 +85,6 @@ export function EasterBug(_props: { step: number }) {
           <div className="flex items-center gap-2 text-ink/60 mb-2">
             <span className="h-2 w-2 rounded-full bg-emerald-400/60" />
             <span>colliderml · github discussion</span>
-            <span className="ml-auto text-ink/60">Apr 4, 2026 · 10:42 CEST</span>
           </div>
           <div className="grid grid-cols-[80px_1fr] gap-x-4 gap-y-1 text-ink/60">
             <div className="text-ink/60">From:</div><div className="text-ink">a colleague</div>

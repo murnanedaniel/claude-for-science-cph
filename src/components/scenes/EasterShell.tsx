@@ -23,9 +23,6 @@ export function EasterShell({ beat, total = 10, children, headline, hint, align 
       <div className="absolute inset-0 flex flex-col p-10 md:p-14">
         <div className="flex items-start justify-between">
           <div>
-            <div className="text-[11px] uppercase tracking-[0.3em] text-accent">
-              {beat} / {total}
-            </div>
             {headline && (
               <div className="mt-2 text-[clamp(26px,3.3vw,44px)] font-serif italic text-ink leading-tight max-w-[780px]">
                 {headline}
