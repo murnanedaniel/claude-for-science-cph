@@ -48,6 +48,7 @@ import { BasicModelResult } from "@/components/scenes/BasicModelResult";
 import { EasterSpec } from "@/components/scenes/EasterSpec";
 import { RemoteHub } from "@/components/scenes/RemoteHub";
 import { ContextRules } from "@/components/scenes/ContextRules";
+import { DocDemo } from "@/components/scenes/DocDemo";
 import { GoalDemo } from "@/components/scenes/GoalDemo";
 import { KitProjectsBrief } from "@/components/scenes/KitProjectsBrief";
 import { ContextSecondBrain } from "@/components/scenes/ContextSecondBrain";
@@ -71,6 +72,7 @@ export const SCENE_COMPONENTS: Partial<Record<SceneId, SceneComponent>> = {
   modelsBetter: KitScenes.modelsBetter as unknown as SceneComponent,
 
   title: TitleSlide,
+  docDemo: DocDemo as unknown as SceneComponent,
   goalDemo: GoalDemo as unknown as SceneComponent,
   kitProjectsBrief: KitProjectsBrief as unknown as SceneComponent,
   homeHardware: KitScenes.homeHardware as unknown as SceneComponent,

@@ -61,6 +61,7 @@ export type SceneId =
   | "hamletMeet"
   | "hamlet"
   | "contextRules"
+  | "docDemo"
   | "goalDemo"
   | "kitProjectsBrief"
   | "homeHardware"
@@ -157,10 +158,11 @@ export const SCENES: Scene[] = [
   { id: "hamletMeet", label: "HAMLET · on attendees' phones", act: 4, startSec: 658, endSec: 680, steps: 3, lesson: 5 },
   { id: "hamletPanel", label: "HAMLET · on the projector", act: 4, startSec: 680, endSec: 695, steps: 2, lesson: 5 },
   { id: "lesson6", label: "Lesson 6 · talk to Claude in a doc", act: 4, startSec: 695, endSec: 710, steps: 2, lesson: 6 },
-  { id: "close", label: "Close", act: 4, startSec: 710, endSec: 718, steps: 1 },
+  { id: "docDemo", label: "A paper section reviewed in a doc", act: 4, startSec: 710, endSec: 725, steps: 2, lesson: 6 },
+  { id: "close", label: "Close", act: 4, startSec: 725, endSec: 733, steps: 1 },
 ];
 
-export const TOTAL_SEC = 718;
+export const TOTAL_SEC = 733;
 
 export function formatMMSS(sec: number) {
   const s = Math.max(0, Math.floor(sec));
