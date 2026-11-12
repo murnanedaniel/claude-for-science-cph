@@ -51,7 +51,6 @@ export function TitleSlide({ step: _step }: { step: number }) {
         >
           <div className="flex items-start justify-between text-[13px] tracking-wide text-ink/60">
             <span>Claude for Science · Niels Bohr Institute · 12 November 2026</span>
-            <span>15 minutes</span>
           </div>
 
           <TitleLoops />
@@ -82,11 +81,11 @@ export function TitleSlide({ step: _step }: { step: number }) {
             </motion.div>
           </div>
 
-          <div className="absolute top-[9%] right-[5%] flex gap-[2.5%]" style={{ fontFamily: "var(--font-geist-mono)" }}>
+          <div className="absolute top-[7%] right-[5%] flex gap-4" style={{ fontFamily: "var(--font-geist-mono)" }}>
             {[["/qr-talk.svg", "These slides"], ["/qr-kit-course.svg", "The KIT course"]].map(([src, label]) => (
               <div key={src} className="flex flex-col items-center gap-1">
                 <img src={asset(src)} alt={`QR code: ${label}`} className="w-[clamp(60px,6vw,96px)]" />
-                <span className="text-[clamp(9px,0.75vw,12px)] text-ink/60">{label}</span>
+                <span className="whitespace-nowrap text-[clamp(9px,0.75vw,12px)] text-ink/60">{label}</span>
               </div>
             ))}
           </div>
