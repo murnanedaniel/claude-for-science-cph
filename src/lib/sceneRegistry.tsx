@@ -48,6 +48,7 @@ import { BasicModelResult } from "@/components/scenes/BasicModelResult";
 import { EasterSpec } from "@/components/scenes/EasterSpec";
 import { RemoteHub } from "@/components/scenes/RemoteHub";
 import { ContextRules } from "@/components/scenes/ContextRules";
+import { ContextSecondBrain } from "@/components/scenes/ContextSecondBrain";
 
 export type SceneComponent = (props: {
   step: number;
@@ -68,6 +69,8 @@ export const SCENE_COMPONENTS: Partial<Record<SceneId, SceneComponent>> = {
   modelsBetter: KitScenes.modelsBetter as unknown as SceneComponent,
 
   title: TitleSlide,
+  contextSecondBrain: ContextSecondBrain as unknown as SceneComponent,
+  ercJudges: KitScenes.ercJudges as unknown as SceneComponent,
   aboutPhysics: AboutPhysics as unknown as SceneComponent,
   lesson1: Lesson1 as unknown as SceneComponent,
   lesson2: Lesson2 as unknown as SceneComponent,

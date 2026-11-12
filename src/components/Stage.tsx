@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { SCENES, type SceneId } from "@/lib/timeline";
+import { LESSON_SHORT, SCENES, type SceneId } from "@/lib/timeline";
 import { useKeyboard } from "@/lib/useKeyboard";
 import { useElapsed } from "@/lib/useElapsed";
 import { PresenterClock } from "./PresenterClock";
@@ -39,8 +39,17 @@ export function Stage() {
 
   const scene = SCENES[sceneIdx];
   // Theme is now driven by act number, not per-scene flags.
-  // Act 1 stays dark; Acts 2–4 use light paper.
-  const theme = scene.act >= 2 ? "light" : "dark";
+  // Act 1 stays dark; Acts 2–4 use light paper. loopsVizOuter closes act 1
+  // but draws LoopsViz in its light theme with no background of its own,
+  // so it keeps the light paper it had when it opened act 2.
+  const theme = scene.act >= 2 || scene.id === "loopsVizOuter" ? "light" : "dark";
+
+  // Signpost chip: which lesson this scene belongs to. Not shown on the
+  // lesson cards themselves (they already say it in large type).
+  const lessonChip =
+    scene.lesson && !scene.id.startsWith("lesson")
+      ? `Lesson ${scene.lesson}${scene.lessonNote ? ` ${scene.lessonNote}` : ""} · ${LESSON_SHORT[scene.lesson]}`
+      : null;
 
   const advance = useCallback(() => {
     setRunning(true);
@@ -125,6 +134,33 @@ export function Stage() {
 
       <PaperRollOverlay target={rollTarget} durationMs={rollDurationMs} />
 
+      {/* Top-right, inside the top padding every lesson-tagged scene keeps
+          (KitBeat 4vh, scene sections 3% of width, EasterShell 56px), so it
+          sits above titles and content rather than on them. Own paper fill
+          and border so it reads over dark terminal panels too. */}
+      {lessonChip && (
+        <motion.div
+          key={lessonChip}
+          aria-label="Current lesson"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="fixed z-40 pointer-events-none whitespace-nowrap rounded-full border"
+          style={{
+            top: "clamp(4px, 0.7vh, 8px)",
+            right: "clamp(10px, 1.4vw, 24px)",
+            padding: "0.25em 0.9em",
+            fontFamily: "var(--font-geist-mono)",
+            fontSize: "clamp(10px, 0.85vw, 14px)",
+            lineHeight: 1.3,
+            color: "rgba(20, 20, 20, 0.7)",
+            backgroundColor: "#f6f1e7",
+            borderColor: "rgba(20, 20, 20, 0.18)",
+          }}
+        >
+          {lessonChip}
+        </motion.div>
+      )}
 
 
       {clockVisible && (

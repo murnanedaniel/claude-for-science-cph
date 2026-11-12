@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { asset } from "@/lib/asset";
 
 const ink = "#49483e", red = "#a63d35", green = "#386b4c", paper = "#f6f1e7";
 const tools = [
@@ -63,11 +64,22 @@ export function AboutMe({ step }: { step: number }) {
   return <motion.div className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.35 } }}>
     <div className="relative w-[78%] max-w-[1100px] aspect-[16/10]">
       <div className="absolute inset-0 flex flex-col p-[6%] text-ink" style={{ fontFamily: "var(--font-serif)" }}>
-        <h1 className="text-[clamp(30px,3.2vw,54px)] italic leading-tight">What do I do at Halfspace?</h1>
+        <div className="flex items-center gap-[2.5%]">
+          <img src={asset("/halfspace-logo.svg")} alt="Halfspace logo" className="h-[clamp(36px,3.4vw,58px)] w-auto shrink-0" />
+          <div className="min-w-0">
+            {/* Halfspace's own wordmark is white; brightness(0) renders it black on the light page. */}
+            <img src={asset("/halfspace-wordmark.webp")} alt="Halfspace" className="mb-[0.6vh] h-[clamp(11px,0.95vw,16px)] w-auto" style={{ filter: "brightness(0)" }} />
+            <h1 className="text-[clamp(26px,2.4vw,42px)] italic leading-tight">At Halfspace I work on the security of AI agents</h1>
+          </div>
+        </div>
         <div className="mt-[3%] flex min-h-0 flex-1 items-center gap-[5%]">
-          <p className="w-[35%] text-[clamp(15px,1.2vw,19px)] leading-[1.55] text-ink/75">We map agentic systems, catalogue their threat vectors, quantify the risks and add controls. With faculty, we attack those systems to find which controls work for which agent topologies.</p>
+          <div className="w-[35%] space-y-[1.5vh] text-[clamp(14px,1.15vw,19px)] leading-[1.5]">
+          <p>Halfspace, a Copenhagen data and AI company, helps companies &ldquo;create enduring and lasting value through artificial intelligence&rdquo;.</p>
+          <p className="text-ink/75">We map agentic systems, catalogue their threat vectors, quantify the risks and add controls. With faculty, we attack those systems to find which controls work for which agent topologies.</p>
+          </div>
           <div className="h-full w-[60%]"><BankingAgent step={step} /></div>
         </div>
+        <p className="mt-[1%] text-[clamp(10px,0.8vw,13px)] text-[#625d54]" style={{ fontFamily: "var(--font-geist-mono)" }}>Logo and quote: halfspace.ai, 12 Nov 2026</p>
       </div>
     </div>
   </motion.div>;

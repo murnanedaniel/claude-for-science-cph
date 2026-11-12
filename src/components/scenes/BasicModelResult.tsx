@@ -12,10 +12,10 @@ const events = [
 const rungs = ["particles and masses", "conservation laws", "decays", "spins and charges", "interactions", "a Lagrangian"];
 
 export function BasicModelResult({ step }: { step: number }) {
-  const beat = Math.max(0, Math.min(2, step));
+  const beat = Math.max(0, Math.min(1, step));
   return (
     <section className="absolute inset-0 flex flex-col bg-[#f6f1e7] px-[5%] py-[3%] text-[#141414]">
-      <h1 className="text-[clamp(28px,3.2vw,54px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>How far did the agent lab get?</h1>
+      <h1 className="text-[clamp(28px,3.2vw,54px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>The agent lab started late and met five of its six targets by 19:24</h1>
       <motion.div key={beat} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex min-h-0 flex-1 flex-col justify-center">
         {beat === 0 && <div>
           <ol className="grid grid-cols-5 gap-[1.2vw]">
@@ -33,9 +33,8 @@ export function BasicModelResult({ step }: { step: number }) {
             <span className={`ml-auto text-[clamp(15px,1.3vw,21px)] ${index === 2 ? "text-[#995c0b]" : "text-[#136c34]"}`} style={{ fontFamily: "var(--font-geist-mono)" }}>{index === 2 ? "◐ partial" : "✓ met"}</span>
           </li>)}
         </ol>}
-        {beat === 2 && <p className="max-w-[1250px] text-[clamp(32px,3.8vw,61px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>It used about 3% of its event budget, and no lab agent ever saw the true laws.</p>}
       </motion.div>
-      <p className="text-[clamp(10px,0.85vw,14px)] text-[#14141499]" style={{ fontFamily: "var(--font-geist-mono)" }}>KIT course, 22 Oct 2026; judge&apos;s score at 19:24; post-mortem</p>
+      <p className="text-[clamp(10px,0.85vw,14px)] text-[#14141499]" style={{ fontFamily: "var(--font-geist-mono)" }}>KIT course, 22 Oct 2026; judge&apos;s score at 19:24; course post-mortem</p>
     </section>
   );
 }

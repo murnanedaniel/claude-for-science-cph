@@ -18,6 +18,8 @@ import { DataToLaws } from "./r9/DataToLaws";
 import { UniversePipeline } from "./r9/UniversePipeline";
 import { LabKit } from "./r9/LabKit";
 import { CheckLadder } from "./r35/CheckLadder";
+import { ErcR32 } from "./r32/ErcR32";
+import { JudgePanelR3 } from "./r36/JudgePanelR3";
 
 function ChatlasWithLatest({ step }: { step: number }) {
   return step < 3 ? <ChatlasDetailR39 step={step} /> : <ChatlasLatest />;
@@ -85,4 +87,12 @@ export function hamletMeet({ step }: { step: number }) {
 
 export function hamletPanel({ step }: { step: number }) {
   return <KitBeat title={"What did the agent put on the projector?"} source={"HAMLET-PHYSICS 2026 closing panel, 21 Aug 2026: projector log, 61 cards written live by Claude from the room audio and the week's conference memory (panel-cards.md header); two excerpts selected by slide step; full-context claim: Daniel, 22 Oct 2026"} Scene={HamletPanelR32} step={step} />;
+}
+
+export function ercProposal({ step }: { step: number }) {
+  return <KitBeat title={"Claude and I prepared an ERC proposal in a week"} source={"ERC StG 2027 working files, Oct 2026: mock-panel scores, 3 anchors and 11 held-out real proposals (7 funded, 4 not), AUC 0.93 = funded above unfunded in 93% of pairs, bootstrap CI; own 2025 StG placed at 76 vs real Step 1 range 78-87 (same as judges scene) · budget: host finance export in, resources text out · portal: Daniel, 21 Oct 2026"} Scene={ErcR32} step={step} />;
+}
+
+export function ercJudges({ step }: { step: number }) {
+  return <KitBeat title={"Three gpt-6-astra judges ranked past ERC proposals"} source={"My mock ERC Step 1 panel, 7 Oct 2026: judges = gpt-6-astra run through the Codex CLI, three personas; 3 anchors = real past ERC proposals by other applicants, outcomes shown; 11 held-out real past ERC proposals with known outcomes, scored blind, one of them my own 2025 StG; AUC on mean rank, bootstrap 95% CI, n = 11 (7 funded, 4 not); own proposal placed at 76 vs real Step 1 range 78-87"} Scene={JudgePanelR3} step={step} />;
 }

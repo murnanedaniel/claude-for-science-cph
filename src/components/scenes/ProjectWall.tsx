@@ -37,10 +37,10 @@ function Wall({ play }: { play: boolean }) {
 
   return (
     <div className="absolute inset-0 flex flex-col bg-[#f6f1e7] px-[5%] py-[3%] text-[#141414]">
-      <h1 className="text-[clamp(28px,3.2vw,54px)]" style={{ fontFamily: "var(--font-serif)" }}>What am I working on now?</h1>
+      <h1 className="text-[clamp(26px,2.8vw,48px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>These are the research projects I am working on now</h1>
       <div className="my-[2%] grid min-h-0 flex-1 grid-cols-7 grid-rows-6 gap-[0.65vw]">
         {titles.map((title, i) => (
-          <motion.div key={title} className="relative flex items-center rounded border p-[0.7vw] text-[clamp(9px,0.86vw,15px)] leading-snug"
+          <motion.div key={title} className="relative flex items-center overflow-hidden rounded border p-[0.5vw] text-[clamp(8px,0.72vw,12px)] leading-tight"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: settled && i !== winner ? 0.18 : 1, y: 0, scale: settled && i === winner ? 1.55 : 1,
               backgroundColor: selected === i ? "#203e58" : "#fbf8f1", color: selected === i ? "#ffffff" : "#141414",
