@@ -74,12 +74,11 @@ export function AboutMe({ step }: { step: number }) {
         </div>
         <div className="mt-[3%] flex min-h-0 flex-1 items-center gap-[5%]">
           <div className="w-[35%] space-y-[1.5vh] text-[clamp(14px,1.15vw,19px)] leading-[1.5]">
-          <p>Halfspace, a Copenhagen data and AI company, helps companies &ldquo;create enduring and lasting value through artificial intelligence&rdquo;.</p>
-          <p className="text-ink/75">We map agentic systems, catalogue their threat vectors, quantify the risks and add controls. With faculty, we attack those systems to find which controls work for which agent topologies.</p>
+          <p>Halfspace is a Copenhagen data and AI company that helps companies create lasting value with AI.</p>
+          <p className="text-ink/75">I&apos;m part of Halfspace Labs, where we are working on a research project to map agentic systems, catalogue their threat vectors, quantify the risks and add controls. We attack those systems to find which controls work for which agent topologies.</p>
           </div>
           <div className="h-full w-[60%]"><BankingAgent step={step} /></div>
         </div>
-        <p className="mt-[1%] text-[clamp(10px,0.8vw,13px)] text-[#625d54]" style={{ fontFamily: "var(--font-geist-mono)" }}>Logo and quote: halfspace.ai, 12 Nov 2026</p>
       </div>
     </div>
   </motion.div>;

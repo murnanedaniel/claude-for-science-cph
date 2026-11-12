@@ -22,5 +22,5 @@ export const Lesson1 = ({ step }: StepProps) => <LessonCard n={1} text="Write do
 export const Lesson2 = ({ step }: StepProps) => <LessonCard n={2} text="Make Remote Control the centre of everything." sub="Phone, laptop, home server, HPC cluster and browser share one context. Any dashboard should sit on top of it." step={step} />;
 export const Lesson3 = ({ step }: StepProps) => <LessonCard n={3} text="Still put context everywhere." sub="Rules, skills and CLAUDE.md files still prevent mistakes, even with the newest models, self-critique and orchestration." step={step} />;
 export const Lesson4 = ({ step }: StepProps) => <LessonCard n={4} text="Have a different model family review Claude's work." sub="Claude reviewing Claude misses the same things. I ask Astra and Gemini Carbon." step={step} />;
-export const Lesson5 = ({ step }: StepProps) => <LessonCard n={5} text="In collaborations, Claude delivers real value." step={step} />;
+export const Lesson5 = ({ step }: StepProps) => <LessonCard n={5} text="Claude is really good for collaboration and project management." step={step} />;
 export const Lesson6 = ({ step }: StepProps) => <LessonCard n={6} text="Talk to Claude in a doc." sub="Write the plan, then comment on it." step={step} />;

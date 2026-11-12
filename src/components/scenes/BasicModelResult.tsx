@@ -3,11 +3,11 @@
 import { motion } from "motion/react";
 
 const events = [
-  { time: "14:25", text: "Project starts; inventor agent launches at 14:29 in a sealed session.", blocked: false },
-  { time: "15:44", text: "Universe built; all five validation checks pass.", blocked: false },
-  { time: "15:44–15:59", text: "Stuck at a ‘Trust this folder?’ prompt no agent may answer.", blocked: true },
-  { time: "15:59", text: "Fresh agent lab starts with only data, detector and event budget.", blocked: false },
-  { time: "19:24", text: "A judge scores the lab.", blocked: false },
+  { time: "14:25", text: "Project starts; a sealed session builds a hidden universe.", blocked: false },
+  { time: "15:44–15:59", text: "Universe built, then stuck at a ‘Trust this folder?’ prompt no agent may answer.", blocked: true },
+  { time: "15:59", text: "Agent lab starts with only data, detector and event budget.", blocked: false },
+  { time: "16:44–17:03", text: "As the course ends, the lab stops to wait for a human. Nudged, it runs on.", blocked: true },
+  { time: "19:24", text: "Judge: five of six targets met, decays partial.", blocked: false },
 ];
 const rungs = ["particles and masses", "conservation laws", "decays", "spins and charges", "interactions", "a Lagrangian"];
 
@@ -15,7 +15,7 @@ export function BasicModelResult({ step }: { step: number }) {
   const beat = Math.max(0, Math.min(1, step));
   return (
     <section className="absolute inset-0 flex flex-col bg-[#f6f1e7] px-[5%] py-[3%] text-[#141414]">
-      <h1 className="text-[clamp(28px,3.2vw,54px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>The agent lab started late and met five of its six targets by 19:24</h1>
+      <h1 className="text-[clamp(28px,3.2vw,54px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>Project 4 stalled as the course ended; resumed, it met five of six targets by 19:24</h1>
       <motion.div key={beat} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex min-h-0 flex-1 flex-col justify-center">
         {beat === 0 && <div>
           <ol className="grid grid-cols-5 gap-[1.2vw]">
