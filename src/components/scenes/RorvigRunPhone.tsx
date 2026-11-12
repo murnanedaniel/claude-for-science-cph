@@ -16,7 +16,7 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
       className="relative h-[82vh] rounded-[40px] border-[10px] border-zinc-800 bg-zinc-900 shadow-2xl overflow-hidden"
       style={{ aspectRatio: "9 / 19" }}
     >
-      <div className="absolute inset-0 rounded-[32px] bg-zinc-950 overflow-hidden">
+      <div className="absolute inset-0 rounded-[32px] bg-[#fbf6ec] overflow-hidden">
         {/* notch */}
         <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-4 w-20 rounded-full bg-black z-20" />
         {children}
@@ -27,7 +27,7 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
 
 function StatusBar({ time = "09:14" }: { time?: string }) {
   return (
-    <div className="relative h-7 flex items-center justify-between px-6 pt-1 text-[11px] font-mono text-zinc-300 z-10">
+    <div className="relative h-7 flex items-center justify-between px-6 pt-1 text-[11px] font-mono text-ink z-10">
       <span className="tabular-nums">{time}</span>
       <span className="flex items-center gap-1.5">
         <span className="text-[10px]">•••</span>
@@ -81,13 +81,13 @@ function Waveform({ active }: { active: boolean }) {
 export function RorvigRunPhone({ step }: { step: number }) {
   return (
     <motion.div
-      className="absolute inset-0 overflow-hidden bg-zinc-950"
+      className="absolute inset-0 overflow-hidden text-ink"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.6 } }}
       exit={{ opacity: 0, transition: { duration: 0.4 } }}
     >
       {/* vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.7)_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(120,100,60,0.14)_100%)] pointer-events-none" />
 
       <div className="relative h-full flex flex-col items-center justify-center py-6 gap-3">
         <motion.div
@@ -99,7 +99,7 @@ export function RorvigRunPhone({ step }: { step: number }) {
             <StatusBar time="09:14" />
 
             {/* Map - top ~58% */}
-            <div className="relative mx-3 mt-1 h-[55%] rounded-2xl overflow-hidden border border-white/5">
+            <div className="relative mx-3 mt-1 h-[55%] rounded-2xl overflow-hidden border border-[#14141420]">
               <motion.img
                 src={asset("/img/rorvigrun.png")}
                 alt="Rorvig run map"
@@ -107,7 +107,7 @@ export function RorvigRunPhone({ step }: { step: number }) {
                 initial={{ opacity: 0, scale: 1.04 }}
                 animate={{ opacity: 1, scale: 1, transition: { duration: 0.9, delay: 0.4 } }}
               />
-              <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between font-mono text-[10px] text-white/90 drop-shadow-md">
+              <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between font-mono text-[10px] text-ink bg-[#fbf6ec] border border-[#14141420] rounded px-2 py-1">
                 <span>5.02 km</span>
                 <span>25 min</span>
                 <span>04 Apr</span>
@@ -116,27 +116,27 @@ export function RorvigRunPhone({ step }: { step: number }) {
 
             {/* Audio memo card */}
             <motion.div
-              className="mx-3 mt-3 rounded-2xl bg-zinc-900 border border-white/5 p-3"
+              className="mx-3 mt-3 rounded-2xl bg-[#fbf6ec] border border-[#14141420] p-3"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.7 } }}
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-[9.5px] uppercase tracking-wider text-zinc-400">
+                <span className="font-mono text-[9.5px] uppercase tracking-wider text-ink/60">
                   Rørvig run · plan
                 </span>
-                <span className="font-mono text-[9px] text-zinc-500">voice memo</span>
+                <span className="font-mono text-[9px] text-ink/60">voice memo</span>
               </div>
 
               <div className="mt-2 flex items-center gap-3">
                 <div className="h-7 w-7 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center">
-                  <span className="text-emerald-300 text-[11px]">▶</span>
+                  <span className="text-emerald-700 text-[11px]">▶</span>
                 </div>
                 <div className="flex-1">
                   <Waveform active={step >= 1} />
                 </div>
               </div>
 
-              <div className="mt-2 font-mono text-[9px] text-zinc-500">
+              <div className="mt-2 font-mono text-[9px] text-ink/60">
                 Sat Apr 4 · 09:14
               </div>
 
@@ -145,7 +145,7 @@ export function RorvigRunPhone({ step }: { step: number }) {
                 {TRANSCRIPT.map((phrase, i) => (
                   <motion.div
                     key={phrase}
-                    className="font-mono text-[10.5px] text-zinc-200"
+                    className="font-mono text-[10.5px] text-ink"
                     initial={{ opacity: 0, x: -6 }}
                     animate={
                       step >= 1
@@ -153,7 +153,7 @@ export function RorvigRunPhone({ step }: { step: number }) {
                         : { opacity: 0, x: -6 }
                     }
                   >
-                    <span className="text-emerald-400/70 mr-1.5">·</span>
+                    <span className="text-emerald-700 mr-1.5">·</span>
                     {phrase}
                   </motion.div>
                 ))}
@@ -161,7 +161,7 @@ export function RorvigRunPhone({ step }: { step: number }) {
 
               {/* Send bubble */}
               <motion.div
-                className="mt-3 pt-3 border-t border-white/5 flex items-center justify-end gap-2"
+                className="mt-3 pt-3 border-t border-[#14141420] flex items-center justify-end gap-2"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={
                   step >= 2
@@ -170,7 +170,7 @@ export function RorvigRunPhone({ step }: { step: number }) {
                 }
               >
                 <motion.div
-                  className="font-mono text-[10px] text-sky-300 bg-sky-500/10 border border-sky-400/30 rounded-full px-3 py-1"
+                  className="font-mono text-[10px] text-accent bg-sky-500/10 border border-sky-400/30 rounded-full px-3 py-1"
                   animate={
                     step >= 2
                       ? { scale: [1, 1.08, 1], transition: { duration: 0.8, repeat: 2 } }
@@ -185,7 +185,7 @@ export function RorvigRunPhone({ step }: { step: number }) {
         </motion.div>
 
         <motion.div
-          className="font-serif italic text-zinc-500 text-[13px]"
+          className="font-serif italic text-ink/60 text-[13px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.6, delay: 1.0 } }}
         >

@@ -99,11 +99,11 @@ function BeamVertexCanvas({ maxR, label }: { maxR: number; label: string }) {
   return (
     <svg viewBox={`0 0 ${VTX_W} ${VTX_H}`} className="w-full h-auto">
       {/* Outer canvas frame (faint) */}
-      <rect x="0" y="0" width={VTX_W} height={VTX_H} fill="rgba(0,0,0,0.20)" />
+      <rect x="0" y="0" width={VTX_W} height={VTX_H} fill="#fbf6ec" stroke="#14141420" />
 
       {/* Beam pipe axis lines */}
-      <line x1="0" y1={CTR_Y} x2={VTX_W} y2={CTR_Y} stroke="rgba(255,255,255,0.06)" strokeDasharray="2 6" />
-      <line x1={CTR_X} y1="0" x2={CTR_X} y2={VTX_H} stroke="rgba(255,255,255,0.06)" strokeDasharray="2 6" />
+      <line x1="0" y1={CTR_Y} x2={VTX_W} y2={CTR_Y} stroke="rgba(20,20,20,0.06)" strokeDasharray="2 6" />
+      <line x1={CTR_X} y1="0" x2={CTR_X} y2={VTX_H} stroke="rgba(20,20,20,0.06)" strokeDasharray="2 6" />
 
       {/* Scale circle */}
       <motion.circle
@@ -121,7 +121,7 @@ function BeamVertexCanvas({ maxR, label }: { maxR: number; label: string }) {
         x={CTR_X + visualR + 8}
         y={CTR_Y + 4}
         fontSize="14"
-        fill="rgba(251,191,36,0.85)"
+        fill="var(--ink)"
         fontFamily="var(--font-geist-mono)"
       >
         {label}
@@ -207,22 +207,22 @@ function SmokingGunPlot() {
   return (
     <div className="w-full max-w-[1280px]">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto">
-        <line x1={xScale(0)} x2={xScale(0)} y1={yScale(0)} y2={yScale(Y_MAX)} stroke="rgba(255,255,255,0.08)" strokeDasharray="2 4" />
-        <line x1={PAD.left} x2={W - PAD.right} y1={yScale(0)} y2={yScale(0)} stroke="rgba(255,255,255,0.25)" />
-        <line x1={PAD.left} x2={PAD.left} y1={yScale(0)} y2={yScale(Y_MAX)} stroke="rgba(255,255,255,0.25)" />
+        <line x1={xScale(0)} x2={xScale(0)} y1={yScale(0)} y2={yScale(Y_MAX)} stroke="rgba(20,20,20,0.08)" strokeDasharray="2 4" />
+        <line x1={PAD.left} x2={W - PAD.right} y1={yScale(0)} y2={yScale(0)} stroke="rgba(20,20,20,0.25)" />
+        <line x1={PAD.left} x2={PAD.left} y1={yScale(0)} y2={yScale(Y_MAX)} stroke="rgba(20,20,20,0.25)" />
 
         {[-0.1, -0.05, 0, 0.05, 0.1].map((x) => (
           <g key={x}>
-            <line x1={xScale(x)} x2={xScale(x)} y1={yScale(0)} y2={yScale(0) + 5} stroke="rgba(255,255,255,0.3)" />
-            <text x={xScale(x)} y={yScale(0) + 22} textAnchor="middle" fontSize="13" fill="#a1a1aa" fontFamily="var(--font-geist-mono)">{x.toFixed(2)}</text>
+            <line x1={xScale(x)} x2={xScale(x)} y1={yScale(0)} y2={yScale(0) + 5} stroke="rgba(20,20,20,0.3)" />
+            <text x={xScale(x)} y={yScale(0) + 22} textAnchor="middle" fontSize="13" fill="#14141499" fontFamily="var(--font-geist-mono)">{x.toFixed(2)}</text>
           </g>
         ))}
-        <text x={(W - PAD.left - PAD.right) / 2 + PAD.left} y={H - 12} textAnchor="middle" fontSize="14" fill="#a1a1aa" fontFamily="var(--font-geist-mono)">d₀ residual [mm]</text>
+        <text x={(W - PAD.left - PAD.right) / 2 + PAD.left} y={H - 12} textAnchor="middle" fontSize="14" fill="#14141499" fontFamily="var(--font-geist-mono)">d₀ residual [mm]</text>
 
         {[0, 10, 20, 30].map((y) => (
           <g key={y}>
-            <line x1={PAD.left - 5} x2={PAD.left} y1={yScale(y)} y2={yScale(y)} stroke="rgba(255,255,255,0.3)" />
-            <text x={PAD.left - 10} y={yScale(y) + 5} textAnchor="end" fontSize="13" fill="#a1a1aa" fontFamily="var(--font-geist-mono)">{y}</text>
+            <line x1={PAD.left - 5} x2={PAD.left} y1={yScale(y)} y2={yScale(y)} stroke="rgba(20,20,20,0.3)" />
+            <text x={PAD.left - 10} y={yScale(y) + 5} textAnchor="end" fontSize="13" fill="#14141499" fontFamily="var(--font-geist-mono)">{y}</text>
           </g>
         ))}
 
@@ -249,28 +249,28 @@ function SmokingGunPlot() {
         <g fontFamily="var(--font-geist-mono)" fontSize="14">
           <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 1.0 } }}>
             <rect x={W - 270} y={36} width="14" height="3" fill="#f87171" />
-            <text x={W - 252} y={42} fill="#f87171">classical method · σ = 0.0318</text>
+            <text x={W - 252} y={42} fill="var(--ink)">classical method · σ = 0.0318</text>
           </motion.g>
           <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 2.4 } }}>
             <rect x={W - 270} y={62} width="14" height="3" fill="#7dd3fc" />
-            <text x={W - 252} y={68} fill="#7dd3fc">ML · σ = 0.0147</text>
+            <text x={W - 252} y={68} fill="var(--ink)">ML · σ = 0.0147</text>
           </motion.g>
           <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 3.8 } }}>
             <rect x={W - 270} y={88} width="14" height="3" fill="#fbbf24" />
-            <text x={W - 252} y={94} fill="#fbbf24">predict zero · σ = 0.0159</text>
+            <text x={W - 252} y={94} fill="var(--ink)">predict zero · σ = 0.0159</text>
           </motion.g>
         </g>
       </svg>
 
       <motion.div
-        className="mt-6 font-serif italic text-zinc-300 text-[clamp(18px,1.6vw,28px)] leading-snug text-center max-w-[1100px] mx-auto"
+        className="mt-6 font-serif italic text-ink text-[clamp(18px,1.6vw,28px)] leading-snug text-center max-w-[1100px] mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.8, delay: 4.2 } }}
       >
-        ML achieves <span className="text-sky-300">0.0147 mm</span>. Predicting literally{" "}
-        <span className="text-amber-300">zero</span> gets you{" "}
-        <span className="text-amber-300">0.0159 mm</span>. <span className="text-zinc-400">Eight percent apart.</span>
-        <div className="mt-3 not-italic font-sans text-zinc-300 text-[clamp(14px,1.2vw,18px)] leading-relaxed">
+        ML achieves <span className="text-accent">0.0147 mm</span>. Predicting literally{" "}
+        <span className="text-accent-warm">zero</span> gets you{" "}
+        <span className="text-accent-warm">0.0159 mm</span>. <span className="text-ink/60">Eight percent apart.</span>
+        <div className="mt-3 not-italic font-sans text-ink text-[clamp(14px,1.2vw,18px)] leading-relaxed">
           The 2× win was never track fitting — the model learned where the beam spot sits and predicted that.
         </div>
       </motion.div>

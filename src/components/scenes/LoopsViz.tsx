@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { RotatingLoop } from "./RotatingLoop";
 
 // Three concentric near-full loops, each with a single arrowhead at one
 // end, rotating infinitely at different periods:
@@ -32,8 +33,7 @@ type LoopSpec = {
   step: 0 | 1 | 2;
 };
 
-// Colours come from theme-aware CSS variables defined in globals.css —
-// `--ink-strong` / `--ink-mute` invert correctly when wrapped in `theme-light`.
+// Text uses the paper theme tokens when the light palette is selected.
 // For the loop strokes we pick palette colours that read on both bg's.
 const LOOP_DARK_COLORS = ["#7dd3fc", "#fbbf24", "#a78bfa"] as const;   // sky / amber / violet
 const LOOP_LIGHT_COLORS = ["#0369a1", "#b45309", "#7c3aed"] as const;  // deeper variants
@@ -75,40 +75,20 @@ function buildLoops(palette: readonly string[]): LoopSpec[] {
   ];
 }
 
-// Build a near-full arc path (sweep ~340°) with a small gap where the
-// arrowhead lives. Arc starts at angle gapEnd (deg) and ends at gapStart.
-function arcPath(radius: number, gapDeg = 18) {
-  // Place the gap at angle 0° (3 o'clock position). Arc goes clockwise
-  // from angle (gapDeg/2) all the way around to (-gapDeg/2 + 360).
-  const half = gapDeg / 2;
-  const startDeg = half;
-  const endDeg = 360 - half;
-  const start = polar(radius, startDeg);
-  const end = polar(radius, endDeg);
-  // large-arc-flag = 1 (sweep > 180°), sweep-flag = 1 (clockwise)
-  return `M ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${radius} ${radius} 0 1 1 ${end.x.toFixed(2)} ${end.y.toFixed(2)}`;
-}
-
-function polar(r: number, deg: number) {
-  const rad = (deg * Math.PI) / 180;
-  return { x: r * Math.cos(rad), y: r * Math.sin(rad) };
-}
-
 type Props = { step: number; theme?: "dark" | "light"; hideHeadline?: boolean };
 
-export function LoopsViz({ step, theme = "dark", hideHeadline = false }: Props) {
+export function LoopsViz({ step, theme = "light", hideHeadline = false }: Props) {
   const isLight = theme === "light";
   const palette = isLight ? LOOP_LIGHT_COLORS : LOOP_DARK_COLORS;
   const LOOPS = buildLoops(palette);
 
-  const titleColor = isLight ? "#141414" : "#f4f4f5";
-  const verbsColor = isLight ? "#4b4b4b" : "#a1a1aa";
-  const dotColor   = isLight ? "#525252" : "#e4e4e7";
+  const titleColor = isLight ? "var(--ink)" : "#f4f4f5";
+  const verbsColor = isLight ? "#14141499" : "#a1a1aa";
+  const dotColor   = isLight ? "var(--ink)" : "#e4e4e7";
 
   return (
     <motion.div
       className={`absolute inset-0 overflow-hidden vignette ${isLight ? "theme-light" : ""}`}
-      style={isLight ? { backgroundColor: "var(--canvas)" } : undefined}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.9 } }}
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
@@ -138,30 +118,12 @@ export function LoopsViz({ step, theme = "dark", hideHeadline = false }: Props) 
           {LOOPS.map((loop) => {
             const visible = step >= loop.step;
             return (
-              <motion.g
+              <RotatingLoop
                 key={loop.title}
-                initial={{ rotate: 0, opacity: 0, scale: 0.92 }}
-                animate={{
-                  rotate: 360,
-                  opacity: visible ? 1 : 0,
-                  scale: visible ? 1 : 0.92,
-                }}
-                transition={{
-                  rotate: { duration: loop.period, ease: "linear", repeat: Infinity },
-                  opacity: { duration: 0.7 },
-                  scale: { duration: 0.7, ease: [0.4, 0, 0.2, 1] },
-                }}
-                style={{ transformBox: "fill-box", transformOrigin: "center" }}
-              >
-                <path
-                  d={arcPath(loop.radius)}
-                  fill="none"
-                  stroke={loop.stroke}
-                  strokeWidth={loop.width}
-                  strokeLinecap="round"
-                  markerEnd={`url(#arrow-${loop.title.replace(/\s+/g, "-")}-${theme})`}
-                />
-              </motion.g>
+                loop={loop}
+                visible={visible}
+                markerId={`arrow-${loop.title.replace(/\s+/g, "-")}-${theme}`}
+              />
             );
           })}
 
@@ -169,7 +131,7 @@ export function LoopsViz({ step, theme = "dark", hideHeadline = false }: Props) 
               text reads cleanly over the rotating arrows. */}
           {LOOPS.map((loop) => {
             const visible = step >= loop.step;
-            const bg = isLight ? "rgba(246,241,231,0.72)" : "rgba(15,17,22,0.55)";
+            const bg = isLight ? "#fbf6ec" : "rgba(15,17,22,0.55)";
             return (
               <motion.g
                 key={`lab-${loop.title}`}
@@ -192,7 +154,7 @@ export function LoopsViz({ step, theme = "dark", hideHeadline = false }: Props) 
                       WebkitBackdropFilter: "blur(8px)",
                       borderRadius: "8px",
                       border: isLight
-                        ? "1px solid rgba(0,0,0,0.06)"
+                        ? "1px solid #14141420"
                         : "1px solid rgba(255,255,255,0.06)",
                       textAlign: loop.labelBox.align as "left" | "right" | "center",
                       boxSizing: "border-box",

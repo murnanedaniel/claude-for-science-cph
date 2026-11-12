@@ -39,9 +39,8 @@ export function Stage() {
 
   const scene = SCENES[sceneIdx];
   // Theme is now driven by act number, not per-scene flags.
-  // Acts 1+2 = dark, Acts 3+4 = light. This guarantees exactly one
-  // dark→light transition (the CalendarFlip scene at the Act 2/3 boundary).
-  const theme = scene.act >= 3 ? "light" : "dark";
+  // Act 1 stays dark; Acts 2–4 use light paper.
+  const theme = scene.act >= 2 ? "light" : "dark";
 
   const advance = useCallback(() => {
     setRunning(true);
@@ -100,7 +99,7 @@ export function Stage() {
   const rollTarget = useMemo(() => {
     // title and aboutMe share the flat paper; it rolls up into the beam on rateRamp.
     const id = SCENES[sceneIdx].id;
-    if (id === "title" || id === "aboutMe") return 0;
+    if (id === "title" || id === "aboutMe" || id === "aboutPhysics") return 0;
     if (id === "rateRamp" && stepIdx < 5) return 0.98;
     return 1.0;
   }, [sceneIdx, stepIdx]);

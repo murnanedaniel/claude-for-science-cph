@@ -56,7 +56,26 @@ export type SceneId =
   | "chatlasAsk"
   | "chatlasTicket"
   | "threeClaims"
-  | "close";
+  | "close"
+  | "hamletPanel"
+  | "hamletMeet"
+  | "hamlet"
+  | "contextRules"
+  | "remoteHub"
+  | "easterSpec"
+  | "lesson6"
+  | "aboutPhysics"
+  | "lesson1"
+  | "lesson2"
+  | "lesson3"
+  | "lesson4"
+  | "lesson5"
+  | "kitContext"
+  | "kitUniverseHistory"
+  | "kitUniversePipeline"
+  | "kitUniverseLab"
+  | "kitUniverseLadder"
+  | "basicModelResult";
 
 export type Theme = "dark" | "light";
 
@@ -75,36 +94,57 @@ export type Scene = {
 // Acts 1-2 dark (the LHC and the Easter paper), acts 3-4 light (since then).
 export const SCENES: Scene[] = [
   // ── Act 1 · who I am, and why tracking (dark) ──
-  { id: "title", label: "Title", act: 1, startSec: 0, endSec: 20, steps: 1 },
-  { id: "aboutMe", label: "About me · Halfspace, NBI, CERN, Berkeley", act: 1, startSec: 20, endSec: 50, steps: 3 },
-  { id: "rateRamp", label: "40 million per second", act: 1, startSec: 50, endSec: 80, steps: 6 },
-  { id: "gnnSolution", label: "Graph tracking on a real event", act: 1, startSec: 80, endSec: 110, steps: 4 },
-  { id: "speedJourney", label: "From 60 s to 100 kHz", act: 1, startSec: 110, endSec: 150, steps: 4 },
+  { id: "title", label: "Title", act: 1, startSec: 0, endSec: 8, steps: 1 },
+  { id: "aboutMe", label: "Halfspace · a banking agent, risks and controls", act: 1, startSec: 8, endSec: 30, steps: 3 },
+  { id: "aboutPhysics", label: "Physics · tracking, particle flow, the Higgs", act: 1, startSec: 30, endSec: 60, steps: 4 },
+  { id: "rateRamp", label: "40 million per second", act: 1, startSec: 60, endSec: 105, steps: 6 },
+  { id: "gnnSolution", label: "Graph tracking on a real event", act: 1, startSec: 105, endSec: 135, steps: 4 },
+  { id: "speedJourney", label: "From 60 s to 100 kHz", act: 1, startSec: 135, endSec: 165, steps: 4 },
 
-  { id: "loopsVizOuter", label: "Three loops: how long until something tells you you're wrong?", act: 2, startSec: 150, endSec: 200, steps: 3 },
-  { id: "easter1Release", label: "Easter · ColliderML release", act: 2, startSec: 200, endSec: 215, steps: 1 },
-  { id: "easter2Bug", label: "Easter · twice as precise. A bug?", act: 2, startSec: 215, endSec: 240, steps: 1 },
-  { id: "easterTyped", label: "Lesson 1 · what did I actually type?", act: 2, startSec: 240, endSec: 300, steps: 5 },
-  { id: "easter3SmokingGun", label: "Easter · a model that always answers zero", act: 2, startSec: 300, endSec: 330, steps: 3 },
-  { id: "easter8Reveal", label: "Easter · the paper", act: 2, startSec: 330, endSec: 350, steps: 3 },
+  { id: "loopsVizOuter", label: "Three loops", act: 2, startSec: 165, endSec: 187, steps: 3 },
+  { id: "lesson1", label: "Lesson 1 · hypotheses and goals first", act: 2, startSec: 187, endSec: 202, steps: 2 },
+  { id: "easter1Release", label: "Easter · ColliderML release", act: 2, startSec: 202, endSec: 210, steps: 1 },
+  { id: "easter2Bug", label: "Easter · the bug email", act: 2, startSec: 210, endSec: 218, steps: 1 },
+  { id: "easterSpec", label: "Easter · the spec I sent first", act: 2, startSec: 218, endSec: 233, steps: 2 },
+  { id: "easter3SmokingGun", label: "Easter · a model that always answers zero", act: 2, startSec: 233, endSec: 255, steps: 3 },
+  { id: "easterTyped", label: "Easter · what I typed", act: 2, startSec: 255, endSec: 293, steps: 5 },
+  { id: "easter8Reveal", label: "Easter · the paper", act: 2, startSec: 293, endSec: 315, steps: 3 },
+  { id: "lesson2", label: "Lesson 2 · Remote Control is the centre", act: 2, startSec: 315, endSec: 330, steps: 2 },
+  { id: "rorvigRunPhone", label: "Easter · from my phone", act: 2, startSec: 330, endSec: 352, steps: 3 },
+  { id: "easter5Dispatch", label: "Easter · terminal, phone, GPUs", act: 2, startSec: 352, endSec: 367, steps: 2 },
+  { id: "remoteHub", label: "One session reaches everything", act: 2, startSec: 367, endSec: 389, steps: 3 },
 
-  { id: "calendarFlipNow", label: "Flip · April → November 2026", act: 3, startSec: 350, endSec: 356, steps: 1 },
-  { id: "projectWall", label: "The wall of projects (unnarrated)", act: 3, startSec: 356, endSec: 370, steps: 2 },
-  { id: "chatlasAsk", label: "Lesson 2 · can it answer our colleagues' questions?", act: 3, startSec: 370, endSec: 410, steps: 2 },
-  { id: "chatlasTicket", label: "Lesson 2 · can it do the ticket?", act: 3, startSec: 410, endSec: 460, steps: 3 },
+  { id: "calendarFlipNow", label: "Flip · April → November 2026", act: 3, startSec: 389, endSec: 397, steps: 1 },
+  { id: "projectWall", label: "The wall of projects", act: 3, startSec: 397, endSec: 412, steps: 2 },
+  { id: "kitContext", label: "KIT · what I tried", act: 3, startSec: 412, endSec: 427, steps: 2 },
+  { id: "kitIntro", label: "KIT · what we cooked, and when", act: 3, startSec: 427, endSec: 442, steps: 2 },
+  { id: "kitGalactic", label: "Project · dark-matter halos", act: 3, startSec: 442, endSec: 464, steps: 3 },
+  { id: "kitRange", label: "Project · beat RANGE", act: 3, startSec: 464, endSec: 486, steps: 3 },
+  { id: "kitUniverse", label: "Project 4 · a new universe", act: 3, startSec: 486, endSec: 516, steps: 4 },
+  { id: "kitUniverseHistory", label: "Project 4 · from data to laws", act: 3, startSec: 516, endSec: 531, steps: 2 },
+  { id: "kitUniversePipeline", label: "Project 4 · building a universe", act: 3, startSec: 531, endSec: 553, steps: 3 },
+  { id: "kitUniverseLab", label: "Project 4 · the agent lab", act: 3, startSec: 553, endSec: 561, steps: 1 },
+  { id: "kitUniverseLadder", label: "Project 4 · the check ladder", act: 3, startSec: 561, endSec: 583, steps: 3 },
+  { id: "basicModelResult", label: "Project 4 · how far it got", act: 3, startSec: 583, endSec: 605, steps: 3 },
+  { id: "kitTimeline", label: "The afternoon, three projects", act: 3, startSec: 605, endSec: 643, steps: 5 },
 
-  { id: "kitIntro", label: "Lesson 3 · KIT, five projects in an afternoon", act: 4, startSec: 460, endSec: 475, steps: 2 },
-  { id: "kitGalactic", label: "Project · dark-matter halos", act: 4, startSec: 475, endSec: 490, steps: 3 },
-  { id: "kitRange", label: "Project · beat RANGE", act: 4, startSec: 490, endSec: 505, steps: 3 },
-  { id: "kitUniverse", label: "Project · a new universe", act: 4, startSec: 505, endSec: 530, steps: 4 },
-  { id: "kitTimeline", label: "Lesson 3 · the afternoon, lane by lane", act: 4, startSec: 530, endSec: 620, steps: 5 },
-  { id: "threeClaims", label: "Lesson 4 · three claims, which would you believe?", act: 4, startSec: 620, endSec: 690, steps: 5 },
-  { id: "galacticPaper", label: "Lesson 4 · where the halo finder got to", act: 4, startSec: 690, endSec: 770, steps: 3 },
-  { id: "modelsBetter", label: "Lesson 5 · are the models getting better?", act: 4, startSec: 770, endSec: 850, steps: 3 },
-  { id: "close", label: "Close", act: 4, startSec: 850, endSec: 900, steps: 1 },
+  { id: "lesson3", label: "Lesson 3 · context everywhere", act: 4, startSec: 643, endSec: 658, steps: 2 },
+  { id: "contextRules", label: "What context my agents get", act: 4, startSec: 658, endSec: 680, steps: 3 },
+  { id: "lesson4", label: "Lesson 4 · another model family reviews", act: 4, startSec: 680, endSec: 695, steps: 2 },
+  { id: "threeClaims", label: "Three claims", act: 4, startSec: 695, endSec: 733, steps: 5 },
+  { id: "galacticPaper", label: "Where the halo finder got to", act: 4, startSec: 733, endSec: 755, steps: 3 },
+  { id: "lesson5", label: "Lesson 5 · collaboration", act: 4, startSec: 755, endSec: 763, steps: 1 },
+  { id: "hamlet", label: "HAMLET · the brain", act: 4, startSec: 763, endSec: 778, steps: 2 },
+  { id: "hamletMeet", label: "HAMLET · on attendees' phones", act: 4, startSec: 778, endSec: 800, steps: 3 },
+  { id: "hamletPanel", label: "HAMLET · on the projector", act: 4, startSec: 800, endSec: 815, steps: 2 },
+  { id: "chatlasAsk", label: "ChATLAS · can it answer questions?", act: 4, startSec: 815, endSec: 830, steps: 2 },
+  { id: "chatlasTicket", label: "ChATLAS · can it do the ticket?", act: 4, startSec: 830, endSec: 852, steps: 3 },
+  { id: "lesson6", label: "Lesson 6 · talk to Claude in a doc", act: 4, startSec: 852, endSec: 867, steps: 2 },
+  { id: "modelsBetter", label: "Pushback since May", act: 4, startSec: 867, endSec: 889, steps: 3 },
+  { id: "close", label: "Close", act: 4, startSec: 889, endSec: 897, steps: 1 },
 ];
 
-export const TOTAL_SEC = 900;
+export const TOTAL_SEC = 897;
 
 export function formatMMSS(sec: number) {
   const s = Math.max(0, Math.floor(sec));

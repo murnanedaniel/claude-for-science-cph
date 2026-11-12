@@ -52,7 +52,7 @@ function PhoneFrame({ children, dim }: { children: React.ReactNode; dim?: boolea
       className={`relative h-[78vh] rounded-[36px] border-[8px] border-zinc-800 bg-zinc-900 shadow-2xl overflow-hidden transition-opacity ${dim ? "opacity-60" : ""}`}
       style={{ aspectRatio: "9 / 19" }}
     >
-      <div className="absolute inset-0 rounded-[28px] bg-zinc-950 overflow-hidden">
+      <div className="absolute inset-0 rounded-[28px] bg-[#fbf6ec] text-ink overflow-hidden">
         <div className="absolute top-1.5 left-1/2 -translate-x-1/2 h-3 w-16 rounded-full bg-black z-30" />
         {children}
       </div>
@@ -68,8 +68,8 @@ function Bubble({ ev }: { ev: Ev }) {
       <div
         className={`max-w-[85%] rounded-2xl px-2.5 py-1.5 font-mono text-[10px] leading-snug ${
           isUser
-            ? "bg-sky-700 text-white rounded-br-sm"
-            : "bg-zinc-800 text-zinc-100 rounded-bl-sm"
+            ? "bg-sky-100 text-ink border border-[#14141420] rounded-br-sm"
+            : "bg-[#fbf6ec] text-ink border border-[#14141420] rounded-bl-sm"
         }`}
       >
         {ev.text.length > 200 ? ev.text.slice(0, 200) + "…" : ev.text}
@@ -285,7 +285,7 @@ export function EasterDispatch({ step }: { step: number }) {
       <div className={`grid w-full ${showPhone ? "grid-cols-[minmax(0,1fr)_340px]" : "grid-cols-1"} gap-6 max-w-[1600px]`}>
         {/* Terminal */}
         <div className="flex flex-col gap-3 min-h-0 min-w-0">
-          <div className="bg-zinc-950/90 border border-white/10 rounded-md p-5 font-mono text-[clamp(14px,1.15vw,18px)] leading-relaxed shadow-2xl h-[72vh] flex flex-col relative">
+          <div className="bg-zinc-950 border border-[#14141420] rounded-xl p-5 font-mono text-[clamp(14px,1.15vw,18px)] leading-relaxed shadow-2xl h-[72vh] flex flex-col relative">
             <div className="text-emerald-400/80 text-[9.5px] uppercase tracking-wider mb-2 flex justify-between shrink-0">
               <span>terminal · perlmutter</span>
               <span className="text-zinc-500 tabular-nums">
@@ -343,20 +343,20 @@ export function EasterDispatch({ step }: { step: number }) {
           {/* Resources */}
           {showResources && (
             <motion.div
-              className="bg-zinc-900/70 border border-white/10 rounded-md p-3 font-mono text-[11px] flex items-center gap-6"
+              className="bg-[#fbf6ec] border border-[#14141420] rounded-md p-3 font-mono text-[11px] flex items-center gap-6"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
             >
-              <div className="text-emerald-400/80 text-[9.5px] uppercase tracking-wider">resources</div>
+              <div className="text-emerald-700 text-[9.5px] uppercase tracking-wider">resources</div>
               <div className="flex items-baseline gap-2">
-                <span className="text-zinc-500 text-[10px] uppercase">cpu-h</span>
-                <span className="text-zinc-100 text-[18px] tabular-nums">{resources.cpu.toLocaleString()}</span>
+                <span className="text-ink/60 text-[10px] uppercase">cpu-h</span>
+                <span className="text-ink text-[18px] tabular-nums">{resources.cpu.toLocaleString()}</span>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-zinc-500 text-[10px] uppercase">gpu-h</span>
-                <span className="text-zinc-100 text-[18px] tabular-nums">{resources.gpu.toLocaleString()}</span>
+                <span className="text-ink/60 text-[10px] uppercase">gpu-h</span>
+                <span className="text-ink text-[18px] tabular-nums">{resources.gpu.toLocaleString()}</span>
               </div>
-              <div className="ml-auto text-zinc-500 text-[10px]">
+              <div className="ml-auto text-ink/60 text-[10px]">
                 Apr 2 → Apr 7 · 5 days, 4 nights
               </div>
             </motion.div>
@@ -371,16 +371,16 @@ export function EasterDispatch({ step }: { step: number }) {
             animate={{ opacity: 1, x: 0, transition: { duration: 0.7 } }}
           >
             <PhoneFrame dim={isRapid}>
-              <div className="h-7 flex items-center justify-between px-4 pt-1 text-[10px] font-mono text-zinc-300">
+              <div className="h-7 flex items-center justify-between px-4 pt-1 text-[10px] font-mono text-ink">
                 <span>11:02</span>
                 <span className="flex gap-1.5">
                   <span className="text-[9px]">•••</span>
                 </span>
               </div>
-              <div className="mx-2 mt-1 rounded-lg bg-zinc-900 border border-white/5 px-2 py-1.5 flex items-center gap-2">
+              <div className="mx-2 mt-1 rounded-lg bg-[#fbf6ec] border border-[#14141420] px-2 py-1.5 flex items-center gap-2">
                 <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <div className="text-amber-300 text-[10px]">☀</div>
-                <div className="font-mono text-[10px] text-zinc-200 truncate">Claude Code · easter-beamspot</div>
+                <div className="text-accent-warm text-[10px]">☀</div>
+                <div className="font-mono text-[10px] text-ink truncate">Claude Code · easter-beamspot</div>
               </div>
               <div className="mx-2 mt-2 overflow-hidden">
                 {phoneEvents.map((ev, i) => (

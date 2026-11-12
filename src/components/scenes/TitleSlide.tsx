@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { RotatingLoop } from "./RotatingLoop";
 
 // The paper-roll effect is no longer handled here — it lives in
 // <PaperRollOverlay> at the Stage level, so it can persist into RateRamp's
@@ -8,47 +9,24 @@ import { motion } from "motion/react";
 // TitleSlide now just fades the CSS paper out on exit; the overlay's rolling
 // animation starts as soon as the scene advances past this one.
 
-// Three loops (experiment, paper, programme), each with a dot orbiting at its
-// own pace: the talk's structure, drawn live because this deck is a web page.
 const LOOPS = [
-  { r: 46, label: "experiment", dur: 4, color: "#b45309" },
-  { r: 86, label: "paper", dur: 9, color: "#1d4ed8" },
-  { r: 126, label: "programme", dur: 18, color: "#047857" },
+  { radius: 95, period: 2, stroke: "#85502e", width: 2.5, title: "experiment" },
+  { radius: 175, period: 6, stroke: "#425c65", width: 2.5, title: "paper" },
+  { radius: 255, period: 18, stroke: "#52634a", width: 2.5, title: "programme" },
 ];
 
 function TitleLoops() {
   return (
-    <svg
-      viewBox="-150 -150 300 300"
-      className="absolute right-[4%] top-[8%] w-[28%] pointer-events-none"
-      aria-hidden
-    >
-      {LOOPS.map((l, i) => (
-        <motion.g
-          key={l.label}
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={{ opacity: 1, scale: 1, transition: { duration: 0.9, delay: 0.5 + i * 0.35, ease: [0.22, 1, 0.36, 1] } }}
-        >
-          <circle r={l.r} fill="none" stroke={l.color} strokeOpacity={0.35} strokeWidth={1.5} strokeDasharray={i === 0 ? "" : "3 4"} />
-          <motion.g
-            animate={{ rotate: 360 }}
-            transition={{ duration: l.dur, repeat: Infinity, ease: "linear" }}
-          >
-            <circle cx={l.r} cy={0} r={5} fill={l.color} />
-            <circle cx={l.r} cy={0} r={11} fill={l.color} fillOpacity={0.15} />
-          </motion.g>
-          <text
-            x={0}
-            y={-l.r - 6}
-            textAnchor="middle"
-            fontSize={10}
-            fill={l.color}
-            style={{ fontFamily: "var(--font-geist-mono)", letterSpacing: "0.08em" }}
-          >
-            {l.label}
-          </text>
-        </motion.g>
-      ))}
+    <svg viewBox="-290 -300 580 620" className="absolute right-[4%] top-[25%] w-[34%]" role="img" aria-label="Three rotating loops: experiment, paper, programme">
+      <defs>
+        {LOOPS.map(loop => <marker key={loop.title} id={`title-${loop.title}`} viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill={loop.stroke} /></marker>)}
+      </defs>
+      {LOOPS.map(loop => <RotatingLoop key={loop.title} loop={loop} visible markerId={`title-${loop.title}`} />)}
+      {LOOPS.map(loop => <g key={loop.title} transform={`translate(0, ${-loop.radius})`}>
+        <rect x={-75} y={-13} width={150} height={26} rx={5} fill="#f6f1e7" />
+        <text textAnchor="middle" y={6} fill={loop.stroke} fontSize={19} fontFamily="var(--font-geist-mono)">{loop.title}</text>
+      </g>)}
+      <circle r={3} fill="#3b3933" />
     </svg>
   );
 }
@@ -82,10 +60,10 @@ export function TitleSlide({ step: _step }: { step: number }) {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.1 } }}
             >
-              <h1 className="text-[clamp(36px,5.2vw,84px)] leading-[1.05] text-ink">
+              <h1 className="max-w-[60%] text-[clamp(36px,4.6vw,74px)] leading-[1.05] text-ink">
                 Doing physics with Claude
               </h1>
-              <h2 className="text-[clamp(22px,2.8vw,44px)] leading-[1.1] mt-3 text-ink/70 italic">
+              <h2 className="max-w-[60%] text-[clamp(22px,2.5vw,40px)] leading-[1.1] mt-3 text-ink/70 italic">
                 From Sonnet 3.5 to now
               </h2>
             </motion.div>

@@ -1,5 +1,8 @@
 "use client";
 
+import { HamletBrainR32 } from "./r32/HamletBrainR32";
+import { HamletMeetR39 } from "./r39/HamletMeetR39";
+import { HamletPanelR32 } from "./r32/HamletPanelR32";
 import { KitBeat } from "./KitBeat";
 import { ChatlasLatest } from "./ChatlasLatest";
 import { ChatlasDetailR39 } from "./r39/ChatlasDetailR39";
@@ -11,6 +14,10 @@ import { RangeWhy } from "./r7/RangeWhy";
 import { InverseProblem } from "./r9/InverseProblem";
 import { ServingScene } from "./r12/Serving";
 import { Quality } from "./r5/Quality";
+import { DataToLaws } from "./r9/DataToLaws";
+import { UniversePipeline } from "./r9/UniversePipeline";
+import { LabKit } from "./r9/LabKit";
+import { CheckLadder } from "./r35/CheckLadder";
 
 function ChatlasWithLatest({ step }: { step: number }) {
   return step < 3 ? <ChatlasDetailR39 step={step} /> : <ChatlasLatest />;
@@ -50,4 +57,32 @@ export function kitServing({ step }: { step: number }) {
 
 export function modelsBetter({ step }: { step: number }) {
   return <KitBeat title={"I push back on the agent less than I did in May."} source={"My own threads: 2,015 messages in 27 Perlmutter Claude Code threads, May–Oct 2026, labelled by Haiku; Sonnet re-labelled 150 of them: pushback yes/no agrees on 89% (Cohen's κ about 0.73); the 0.65 is κ over all five categories (76% raw agreement), mostly other vs instruction · Wilson 95% intervals · April (6 messages) omitted"} Scene={Quality} step={step} />;
+}
+
+export function kitUniverseHistory({ step }: { step: number }) {
+  return <KitBeat title={"How did physics get from data to laws?"} source={'Kepler 1609, 1619 · Balmer, Ann. Phys. 261 (1885) · Bohr, Phil. Mag. 26 (1913) · Gell-Mann 1961; Barnes et al., PRL 12 (1964) · Schmidt, Lipson, Science 324 (2009) · Brunton et al., PNAS 113 (2016) · Udrescu, Tegmark, Sci. Adv. 6 (2020) · Cranmer et al., NeurIPS 2020 · Shojaee et al., ICLR 2025'} Scene={DataToLaws} step={step} />;
+}
+
+export function kitUniversePipeline({ step }: { step: number }) {
+  return <KitBeat title={"How do we build a universe nobody has seen?"} source={'Basic Model build spec and validation log, 20 to 21 Oct 2026: hand-written UFO, MadGraph with MadSpin, custom fast detector; the geometry, field and budget are what the lab is told'} Scene={UniversePipeline} step={step} />;
+}
+
+export function kitUniverseLab({ step }: { step: number }) {
+  return <KitBeat title={"Demo: what does the agent lab work with?"} source={'Basic Model lab brief, role files and day-of runbook (with the pre-cook launch lessons), 20 to 21 Oct 2026'} Scene={LabKit} step={step} />;
+}
+
+export function kitUniverseLadder({ step }: { step: number }) {
+  return <KitBeat title={"How do we know each discovery is real?"} source={"Milestones, notebook evidence, referee predictions committed before runs, kill criteria, held-out scoring: Basic Model lab brief and role briefs, design notes, 20 Oct 2026 · worked examples are generic illustrations, not lab output"} Scene={CheckLadder} step={step} />;
+}
+
+export function hamlet({ step }: { step: number }) {
+  return <KitBeat title={"What can an agent do for a conference?"} source={"HAMLET = How to Apply Machine Learning in Experiment and Theory (Daniel, 22 Oct 2026) · HAMLET Meet, app for HAMLET-PHYSICS 2026, NBI Copenhagen, 19 to 21 Aug 2026 (indico.nbi.ku.dk/event/2253) · 139 attendees, from its 9,591 pair scores (139 × 138 / 2)"} Scene={HamletBrainR32} step={step} />;
+}
+
+export function hamletMeet({ step }: { step: number }) {
+  return <KitBeat title={"What did attendees see on their phones?"} source={"HAMLET Meet (the conference build) run offline on its synthetic sim attendees, 21 Oct 2026; feed pings from the Aug 2026 sim runs (synthetic attendees; names, places and titles removed) · map: the app's real Aug 2026 attendee layout (UMAP of profiles) and suggested-partner pairs, unlabelled and shuffled"} Scene={HamletMeetR39} step={step} />;
+}
+
+export function hamletPanel({ step }: { step: number }) {
+  return <KitBeat title={"What did the agent put on the projector?"} source={"HAMLET-PHYSICS 2026 closing panel, 21 Aug 2026: projector log, 61 cards written live by Claude from the room audio and the week's conference memory (panel-cards.md header); two excerpts selected by slide step; full-context claim: Daniel, 22 Oct 2026"} Scene={HamletPanelR32} step={step} />;
 }

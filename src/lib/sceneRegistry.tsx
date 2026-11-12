@@ -41,6 +41,13 @@ import { ChatlasTicket } from "@/components/scenes/ChatlasTicket";
 import { ThreeClaims } from "@/components/scenes/ThreeClaims";
 import { CloseSlide } from "@/components/scenes/CloseSlide";
 import { AboutMe } from "@/components/scenes/AboutMe";
+import { AboutPhysics } from "@/components/scenes/AboutPhysics";
+import { Lesson1, Lesson2, Lesson3, Lesson4, Lesson5, Lesson6 } from "@/components/scenes/LessonCard";
+import { KitContext } from "@/components/scenes/KitContext";
+import { BasicModelResult } from "@/components/scenes/BasicModelResult";
+import { EasterSpec } from "@/components/scenes/EasterSpec";
+import { RemoteHub } from "@/components/scenes/RemoteHub";
+import { ContextRules } from "@/components/scenes/ContextRules";
 
 export type SceneComponent = (props: {
   step: number;
@@ -61,6 +68,25 @@ export const SCENE_COMPONENTS: Partial<Record<SceneId, SceneComponent>> = {
   modelsBetter: KitScenes.modelsBetter as unknown as SceneComponent,
 
   title: TitleSlide,
+  aboutPhysics: AboutPhysics as unknown as SceneComponent,
+  lesson1: Lesson1 as unknown as SceneComponent,
+  lesson2: Lesson2 as unknown as SceneComponent,
+  lesson3: Lesson3 as unknown as SceneComponent,
+  lesson4: Lesson4 as unknown as SceneComponent,
+  lesson5: Lesson5 as unknown as SceneComponent,
+  lesson6: Lesson6 as unknown as SceneComponent,
+  kitContext: KitContext as unknown as SceneComponent,
+  basicModelResult: BasicModelResult as unknown as SceneComponent,
+  easterSpec: EasterSpec as unknown as SceneComponent,
+  remoteHub: RemoteHub as unknown as SceneComponent,
+  contextRules: ContextRules as unknown as SceneComponent,
+  kitUniverseHistory: KitScenes.kitUniverseHistory as unknown as SceneComponent,
+  kitUniversePipeline: KitScenes.kitUniversePipeline as unknown as SceneComponent,
+  kitUniverseLab: KitScenes.kitUniverseLab as unknown as SceneComponent,
+  kitUniverseLadder: KitScenes.kitUniverseLadder as unknown as SceneComponent,
+  hamlet: KitScenes.hamlet as unknown as SceneComponent,
+  hamletMeet: KitScenes.hamletMeet as unknown as SceneComponent,
+  hamletPanel: KitScenes.hamletPanel as unknown as SceneComponent,
   aboutMe: AboutMe as unknown as SceneComponent,
   easterTyped: EasterTyped as unknown as SceneComponent,
   chatlasAsk: ChatlasAsk as unknown as SceneComponent,

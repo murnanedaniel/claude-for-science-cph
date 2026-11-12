@@ -55,22 +55,22 @@ export function EasterRelease() {
           animate={{ opacity: 1, y: 0, transition: { duration: 0.7 } }}
         >
           <div className="flex items-baseline gap-4">
-            <div className="font-serif text-zinc-100 text-[clamp(50px,6vw,96px)] leading-none tabular-nums">
+            <div className="font-serif text-ink text-[clamp(50px,6vw,96px)] leading-none tabular-nums">
               28
             </div>
             <div className="flex flex-col">
-              <span className="font-mono text-amber-300 text-[clamp(20px,2vw,30px)] uppercase tracking-wider">TB</span>
-              <span className="font-mono text-zinc-500 text-[10px] uppercase tracking-[0.25em]">tracker · calo · particles · tracks</span>
+              <span className="font-mono text-accent-warm text-[clamp(20px,2vw,30px)] uppercase tracking-wider">TB</span>
+              <span className="font-mono text-ink/60 text-[10px] uppercase tracking-[0.25em]">tracker · calo · particles · tracks</span>
             </div>
           </div>
           <div className="flex items-center gap-2 flex-wrap justify-end max-w-[58%]">
-            <span className="font-mono text-[10px] text-zinc-300 px-2 py-0.5 rounded-sm border border-white/15 bg-zinc-900/60">pu0</span>
-            <span className="font-mono text-[10px] text-zinc-300 px-2 py-0.5 rounded-sm border border-white/15 bg-zinc-900/60">pu200</span>
-            <span className="font-mono text-[10px] text-zinc-500 px-1">×</span>
+            <span className="font-mono text-[10px] text-ink px-2 py-0.5 rounded-sm border border-[#14141420] bg-[#fbf6ec]">pu0</span>
+            <span className="font-mono text-[10px] text-ink px-2 py-0.5 rounded-sm border border-[#14141420] bg-[#fbf6ec]">pu200</span>
+            <span className="font-mono text-[10px] text-ink/60 px-1">×</span>
             {CHANNELS.map((c) => (
-              <span key={c.name} className="font-mono text-[10.5px] text-sky-300 px-1.5 py-0.5 rounded-sm border border-sky-300/30 bg-sky-500/10 whitespace-nowrap">
+              <span key={c.name} className="font-mono text-[10.5px] text-accent px-1.5 py-0.5 rounded-sm border border-sky-300/30 bg-sky-500/10 whitespace-nowrap">
                 {c.name}
-                <span className="ml-1 text-sky-300/55">{c.note}</span>
+                <span className="ml-1 text-accent">{c.note}</span>
               </span>
             ))}
           </div>
@@ -81,14 +81,14 @@ export function EasterRelease() {
           {OBJECTS.map((t, i) => (
             <motion.div
               key={t.label}
-              className="rounded-md border border-white/10 bg-zinc-900/60 p-4"
+              className="rounded-md border border-[#14141420] bg-[#fbf6ec] p-4"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0, transition: { duration: 0.55, delay: 0.25 + i * 0.12 } }}
             >
-              <div className="font-mono text-[14px] text-emerald-300 tracking-wider">
+              <div className="font-mono text-[14px] text-emerald-700 tracking-wider">
                 {t.label}
               </div>
-              <div className="mt-2 font-sans text-[11.5px] text-zinc-400 leading-snug">
+              <div className="mt-2 font-sans text-[11.5px] text-ink/60 leading-snug">
                 {t.sub}
               </div>
             </motion.div>
@@ -97,17 +97,17 @@ export function EasterRelease() {
 
         {/* Production-stack pipeline strip */}
         <motion.div
-          className="flex items-stretch gap-1 rounded-md border border-white/10 bg-zinc-950/60 p-3 overflow-x-auto"
+          className="flex items-stretch gap-1 rounded-md border border-[#14141420] bg-[#fbf6ec] p-3 overflow-x-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.7, delay: 0.9 } }}
         >
           {STACK.map((s, i) => (
             <div key={s} className="flex items-center">
-              <div className="font-mono text-[12px] text-zinc-300 whitespace-nowrap px-3 py-1.5 rounded-sm bg-zinc-900/80 border border-white/10">
+              <div className="font-mono text-[12px] text-ink whitespace-nowrap px-3 py-1.5 rounded-sm bg-[#fbf6ec] border border-[#14141420]">
                 {s}
               </div>
               {i < STACK.length - 1 && (
-                <span className="px-1 text-zinc-600 text-[12px]">→</span>
+                <span className="px-1 text-ink/60 text-[12px]">→</span>
               )}
             </div>
           ))}
