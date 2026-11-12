@@ -9,9 +9,9 @@ const GOAL = "Reproduce the RANGE paper as a basline, and then implement a trans
 // Minutes after 13:55 (goal set) ; goal cleared at 16:56 = 181 min.
 const SPAN = 181;
 const marks: { t: number; time: string; label: string; side: "up" | "down"; tone: "ink" | "muted" | "accent" }[] = [
-  { t: 0, time: "13:55", label: "Daniel types /goal", side: "up", tone: "ink" },
+  { t: 0, time: "13:55", label: "I type /goal", side: "up", tone: "ink" },
   { t: 6, time: "14:01", label: "check: not met", side: "down", tone: "muted" },
-  { t: 50, time: "14:45", label: "Daniel: “Update?”", side: "up", tone: "ink" },
+  { t: 50, time: "14:45", label: "Me: “Update?”", side: "up", tone: "ink" },
   { t: 171, time: "16:46", label: "Claude: “The goal is met.”", side: "up", tone: "ink" },
   { t: 181, time: "16:56", label: "check: met, goal cleared", side: "down", tone: "accent" },
 ];
@@ -54,7 +54,7 @@ function TimeBar() {
           );
         })}
       </div>
-      <p className="mt-[2vh] max-w-[1100px] text-[clamp(18px,1.75vw,29px)] leading-snug" style={serif}>Three hours. Claude ran the GPU work in a second session on Perlmutter and checked on it by itself. Daniel typed one message in that time.</p>
+      <p className="mt-[2vh] max-w-[1100px] text-[clamp(18px,1.75vw,29px)] leading-snug" style={serif}>For three hours Claude ran the GPU work in a second session on Perlmutter and checked on it by itself. I typed one message in that time.</p>
     </div>
   );
 }

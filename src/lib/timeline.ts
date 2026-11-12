@@ -150,18 +150,18 @@ export const SCENES: Scene[] = [
   { id: "remoteHub", label: "One session reaches everything", act: 2, startSec: 501, endSec: 531, steps: 4, lesson: 2 },
   { id: "lesson3", label: "Lesson 3 · context everywhere", act: 4, startSec: 531, endSec: 546, steps: 2, lesson: 3 },
   { id: "contextRules", label: "What context my agents get", act: 4, startSec: 546, endSec: 568, steps: 3, lesson: 3 },
-  { id: "contextSecondBrain", label: "ScienceDash · every past session is searchable", act: 4, startSec: 568, endSec: 590, steps: 3, lesson: 3 },
-  { id: "lesson4", label: "Lesson 4 · another model family reviews", act: 4, startSec: 590, endSec: 605, steps: 2, lesson: 4 },
-  { id: "ercJudges", label: "ERC · a panel of outside-family judges", act: 4, startSec: 605, endSec: 627, steps: 3, lesson: 4 },
-  { id: "lesson5", label: "Lesson 5 · collaboration", act: 4, startSec: 627, endSec: 635, steps: 1, lesson: 5 },
-  { id: "hamlet", label: "HAMLET · the brain", act: 4, startSec: 635, endSec: 650, steps: 2, lesson: 5 },
-  { id: "hamletMeet", label: "HAMLET · on attendees' phones", act: 4, startSec: 650, endSec: 672, steps: 3, lesson: 5 },
-  { id: "hamletPanel", label: "HAMLET · on the projector", act: 4, startSec: 672, endSec: 687, steps: 2, lesson: 5 },
-  { id: "lesson6", label: "Lesson 6 · talk to Claude in a doc", act: 4, startSec: 687, endSec: 702, steps: 2, lesson: 6 },
-  { id: "close", label: "Close", act: 4, startSec: 702, endSec: 710, steps: 1 },
+  { id: "contextSecondBrain", label: "ScienceDash · every past session is searchable", act: 4, startSec: 568, endSec: 606, steps: 5, lesson: 3 },
+  { id: "lesson4", label: "Lesson 4 · another model family reviews", act: 4, startSec: 606, endSec: 621, steps: 2, lesson: 4 },
+  { id: "ercJudges", label: "ERC · a panel of outside-family judges", act: 4, startSec: 621, endSec: 643, steps: 3, lesson: 4 },
+  { id: "lesson5", label: "Lesson 5 · collaboration", act: 4, startSec: 643, endSec: 651, steps: 1, lesson: 5 },
+  { id: "hamlet", label: "HAMLET · the brain", act: 4, startSec: 651, endSec: 666, steps: 2, lesson: 5 },
+  { id: "hamletMeet", label: "HAMLET · on attendees' phones", act: 4, startSec: 666, endSec: 688, steps: 3, lesson: 5 },
+  { id: "hamletPanel", label: "HAMLET · on the projector", act: 4, startSec: 688, endSec: 703, steps: 2, lesson: 5 },
+  { id: "lesson6", label: "Lesson 6 · talk to Claude in a doc", act: 4, startSec: 703, endSec: 718, steps: 2, lesson: 6 },
+  { id: "close", label: "Close", act: 4, startSec: 718, endSec: 726, steps: 1 },
 ];
 
-export const TOTAL_SEC = 710;
+export const TOTAL_SEC = 726;
 
 export function formatMMSS(sec: number) {
   const s = Math.max(0, Math.floor(sec));

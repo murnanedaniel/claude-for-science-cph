@@ -13,54 +13,83 @@ const hits: [string, string][] = [
   ["2026-10-22", "1. Use the Perlmutter session (fastest). Open `perlmutter` and approve my message…"],
 ];
 
-// Real SessionStart hook output (cached context files), trimmed; em dashes -> hyphens.
-const brief = [
-  "## ScienceDash - project context",
-  "# Project Brief - A review of ML-based track finding",
-  "  for the high luminosity era",
-  "status: active",
-  "## Primary metric",
-  "Tracking efficiency (%) - direction: higher",
-  "## Next steps",
-  "- Compile all algorithms and papers to be ablated",
-];
-const unsure = [
-  "This session isn't confidently tied to one project.",
-  "It may belong to:",
-  "- AI Agents in Practice for Physics Research:",
-  "  KIT/KSETA one-day course (2026-10-22)",
-  "- (two other projects)",
+// Screenshots of the live dashboard, 12 Nov 2026 (Playwright, read-only).
+const shots: { src: string; alt: string; title: string; text: string; note: string }[] = [
+  {
+    src: "/sciencedash/projects.png",
+    alt: "ScienceDash projects page with six project cards",
+    title: "Each project has a card with its question, status, tags and next steps",
+    text: "When a session starts inside a project's folder, a hook (a script Claude Code runs automatically) pulls that project's brief into the session.",
+    note: "Six of my 41 projects shown; the rest are hidden for privacy.",
+  },
+  {
+    src: "/sciencedash/hypotheses.png",
+    alt: "Hypotheses tab of the ML track-finding review, each hypothesis with a GPU-hour budget",
+    title: "Each project is split into hypotheses with a GPU-hour budget",
+    text: "The track-finding review has seven hypotheses. Each one has a written statement and a compute budget, e.g. 300 GPU-hours for comparing binned and learned tokens.",
+    note: "An agent picking this up can read what is being tested and how much it may spend before it starts.",
+  },
+  {
+    src: "/sciencedash/autonomy.png",
+    alt: "Autonomy settings for agents on one project: ask, propose or auto per action",
+    title: "Each project sets what its agents may do without asking me",
+    text: "Per action I choose ask, propose or auto. On this project, raising a hypothesis's GPU budget only proposes, and agent spend is capped at 50 GPU-hours.",
+    note: "This is the control panel. No agents were registered on it when I took the screenshot.",
+  },
 ];
 
 const sources = [
-  "ScienceDash hypotheses screen, track-finding project, Apr 2026 (KIT course deck) · github.com/murnanedaniel/sciencedash",
+  "Screen recording of my ScienceDash instance, 12 Nov 2026; private projects, machine names and paths hidden · github.com/murnanedaniel/sciencedash",
+  "ScienceDash projects page, 12 Nov 2026; project count from its portfolio page (36 idea, 3 active, 2 parked)",
+  "ScienceDash, track-finding review project, Hypotheses & Runs tab, 12 Nov 2026",
+  "ScienceDash, track-finding review project, Autonomy panel, 12 Nov 2026",
   "Real output of the sciencedash skill CLI, run 12 Nov 2026; machine label and thread links removed",
-  "~/.claude/hooks/sciencedash-session-start.py and its cached output, trimmed, dashes normalised; two project names withheld",
 ];
 
+const frame =
+  "overflow-hidden rounded-lg border border-[#14141422] bg-white shadow-[0_10px_24px_-14px_rgba(20,20,20,0.3)]";
+
 export function ContextSecondBrain({ step }: { step: number }) {
-  const s = Math.max(0, Math.min(2, step));
+  const s = Math.max(0, Math.min(4, step));
+  const shot = s >= 1 && s <= 3 ? shots[s - 1] : null;
   return (
     <section className="absolute inset-0 flex flex-col bg-[#f6f1e7] px-[5%] py-[3%] text-[#141414]">
-      <h1 className="text-[clamp(26px,3vw,50px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>
-        Every past session is searchable from every new one
+      <h1 className="text-[clamp(24px,2.8vw,46px)] leading-tight" style={{ fontFamily: "var(--font-serif)" }}>
+        Every project and every past session is written down where a new session can read it
       </h1>
-      <motion.div key={s} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex min-h-0 w-full max-w-[1200px] flex-1 flex-col justify-center self-center py-[2.5vh]">
+      <motion.div key={s} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex min-h-0 w-full max-w-[1200px] flex-1 flex-col justify-center self-center py-[2vh]">
         {s === 0 ? (
-          <div className="grid min-h-0 grid-cols-[1fr_1.1fr] items-center gap-[3vw]">
-            <div className="flex flex-col gap-[2.5vh] text-[clamp(17px,1.6vw,26px)] leading-snug">
-              <p>ScienceDash is a dashboard I built. It pulls in the transcript of every Claude Code session, from every machine I work on, into one searchable store.</p>
-              <p>It also holds my projects, split into hypotheses, runs and decisions.</p>
-              <p className="text-[#625d54]">Any session can query it. That makes it my second brain: what one agent learned last month, the next one can look up.</p>
+          <div className="grid min-h-0 grid-cols-[1fr_1.9fr] items-center gap-[3vw]">
+            <div className="flex flex-col gap-[2.5vh] text-[clamp(16px,1.5vw,25px)] leading-snug">
+              <p>ScienceDash is a dashboard I built. It holds my research projects and the transcript of every Claude Code session I run, on every machine, and any new session can query it.</p>
+              <p className="text-[#625d54]">A walk through it: projects, one project&apos;s hypotheses, the agent settings, then a search over past sessions.</p>
             </div>
-            <div className="h-[52vh] overflow-hidden rounded-lg border border-[#14141422] bg-white shadow-[0_10px_24px_-14px_rgba(20,20,20,0.3)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset("/kit/r3x/sd-hypotheses.jpg")} alt="ScienceDash: a project split into hypotheses, each with a compute budget" className="block w-full" />
+            <div className={frame}>
+              <video
+                src={asset("/sciencedash/walkthrough.webm")}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="block max-h-[58vh] w-full"
+              />
             </div>
           </div>
-        ) : s === 1 ? (
+        ) : shot ? (
+          <div className="grid min-h-0 grid-cols-[1.9fr_1fr] items-center gap-[3vw]">
+            <div className={frame}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={asset(shot.src)} alt={shot.alt} className="block max-h-[58vh] w-full object-contain" />
+            </div>
+            <div className="flex flex-col gap-[2.2vh]">
+              <h2 className="text-[clamp(18px,1.7vw,28px)] leading-snug" style={{ fontFamily: "var(--font-serif)" }}>{shot.title}</h2>
+              <p className="text-[clamp(14px,1.3vw,21px)] leading-snug">{shot.text}</p>
+              <p className="text-[clamp(13px,1.15vw,19px)] leading-snug text-[#625d54]">{shot.note}</p>
+            </div>
+          </div>
+        ) : (
           <div className="flex flex-col gap-[3vh]">
-            <p className="text-[clamp(17px,1.6vw,26px)] leading-snug">A skill gives every session one command to search all past conversations. A real search, run today:</p>
+            <p className="text-[clamp(17px,1.6vw,26px)] leading-snug">A skill (a set of instructions plus a script that Claude Code can call) gives every session one command to search all past conversations. A real search, run today:</p>
             <div className="rounded-xl bg-[#1c1b19] px-[2.5%] py-[2.5vh] text-[clamp(13px,1.2vw,20px)] leading-relaxed text-[#ece6da]" style={mono}>
               <p className="text-[#a8e0b0]">$ sd.py search &quot;perlmutter maintenance&quot;</p>
               <p className="text-[#b9b2a5]">5 conversation(s) matching &apos;perlmutter maintenance&apos;:</p>
@@ -69,21 +98,6 @@ export function ContextSecondBrain({ step }: { step: number }) {
               ))}
             </div>
             <p className="text-[clamp(15px,1.35vw,22px)] leading-snug text-[#625d54]">Each hit links to the full thread. Secrets are redacted from transcripts when they are ingested.</p>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-[2.5vh]">
-            <p className="text-[clamp(17px,1.6vw,26px)] leading-snug">A hook, a script Claude Code runs automatically when a session starts, sends the folder and git repo to ScienceDash. The project brief comes back into the session.</p>
-            <div className="grid grid-cols-2 gap-[2vw] text-[clamp(11px,1vw,17px)] leading-relaxed" style={mono}>
-              {[["matched a project", brief], ["no confident match", unsure]].map(([label, lines]) => (
-                <div key={label as string} className="flex flex-col gap-[1vh]">
-                  <p className="text-[#625d54]">{label as string}</p>
-                  <div className="rounded-xl bg-[#1c1b19] px-[5%] py-[2vh] text-[#ece6da]">
-                    {(lines as string[]).map((l, k) => <p key={k} className="whitespace-pre-wrap">{l}</p>)}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-[clamp(15px,1.35vw,22px)] leading-snug text-[#625d54]">If the dashboard is down, the hook uses its last cached copy, and if that fails it adds nothing rather than blocking the session.</p>
           </div>
         )}
       </motion.div>
